@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
 
   <meta charset="UTF-8">
@@ -27,6 +28,7 @@
 
 
     body {
+
       margin: 0;
 
       background:
@@ -1175,7 +1177,7 @@
       id="versionText"
       class="version-badge"
     >
-      V2.1.0
+      V2.2.0
     </div>
 
   </div>
@@ -1355,8 +1357,6 @@
     </div>
 
 
-    <!-- GPS -->
-
     <label>
       📍 GPS / 地址 / 附近店家
     </label>
@@ -1380,8 +1380,6 @@
     </div>
 
 
-    <!-- 地址 -->
-
     <div
       id="addressBox"
       class="address-box"
@@ -1395,8 +1393,6 @@
 
     </div>
 
-
-    <!-- 附近店家 -->
 
     <div
       id="nearbyWrap"
@@ -1419,8 +1415,6 @@
     </div>
 
 
-    <!-- 店家 -->
-
     <label>
       🏪 店家名稱
     </label>
@@ -1439,8 +1433,6 @@
     ></div>
 
 
-    <!-- 餐點 -->
-
     <label>
       🍽️ 吃了什麼
     </label>
@@ -1452,8 +1444,6 @@
       placeholder="例如：天然豚骨拉麵、半熟蛋"
     >
 
-
-    <!-- 金額 -->
 
     <label>
       💰 金額
@@ -1489,8 +1479,6 @@
     </div>
 
 
-    <!-- 評分 -->
-
     <label>
       ⭐ 評分
     </label>
@@ -1501,45 +1489,28 @@
       class="star-group"
     >
 
-      <span
-        class="star"
-        data-value="1"
-      >
+      <span class="star" data-value="1">
         ★
       </span>
 
-      <span
-        class="star"
-        data-value="2"
-      >
+      <span class="star" data-value="2">
         ★
       </span>
 
-      <span
-        class="star"
-        data-value="3"
-      >
+      <span class="star" data-value="3">
         ★
       </span>
 
-      <span
-        class="star"
-        data-value="4"
-      >
+      <span class="star" data-value="4">
         ★
       </span>
 
-      <span
-        class="star"
-        data-value="5"
-      >
+      <span class="star" data-value="5">
         ★
       </span>
 
     </div>
 
-
-    <!-- 照片 -->
 
     <label>
       📷 美食照片
@@ -1565,8 +1536,6 @@
     >
 
 
-    <!-- 備註 -->
-
     <label>
       📝 備註
     </label>
@@ -1577,8 +1546,6 @@
       placeholder="例如：排隊約 20 分鐘、湯頭偏濃，下次還會再來"
     ></textarea>
 
-
-    <!-- 儲存 -->
 
     <button
       id="saveButton"
@@ -1610,7 +1577,6 @@
       OpenStreetMap、Nominatim、Overpass。
       不同地區的店家資料完整度可能不同。
     </div>
-
 
   </div>
 
@@ -1648,10 +1614,6 @@
   </div>
 
 
-  <!-- =====================================
-       紀錄
-  ====================================== -->
-
   <div id="records"></div>
 
 
@@ -1659,8 +1621,7 @@
 
 
 <script>
-
-const APP_VERSION = "2.1.0";
+const APP_VERSION = "2.2.0";
 
 const DB_NAME = "TravelFoodDiaryDB";
 const DB_VERSION = 1;
@@ -2138,8 +2099,6 @@ async function getLocationAndNearby() {
       ]);
 
 
-    /* 地址 */
-
     if (
       results[0].status ===
       "fulfilled"
@@ -2178,8 +2137,6 @@ async function getLocationAndNearby() {
         "目前無法自動辨識地址，但 GPS 已經記錄。";
     }
 
-
-    /* 附近店家 */
 
     if (
       results[1].status ===
@@ -3169,6 +3126,7 @@ function updateSummary(
 
         ratingCount++;
       }
+
     }
   );
 
@@ -4945,7 +4903,6 @@ async function editRecord(
     preview.src =
       currentPhoto;
 
-
     preview.style.display =
       "block";
 
@@ -4954,7 +4911,6 @@ async function editRecord(
     preview.removeAttribute(
       "src"
     );
-
 
     preview.style.display =
       "none";
@@ -4980,13 +4936,8 @@ async function editRecord(
 
 
   window.scrollTo({
-
-    top:
-      0,
-
-    behavior:
-      "smooth"
-
+    top: 0,
+    behavior: "smooth"
   });
 }
 
@@ -5093,10 +5044,8 @@ function resetForm() {
   latitude =
     null;
 
-
   longitude =
     null;
-
 
   gpsAccuracy =
     null;
@@ -5238,7 +5187,7 @@ async function exportData() {
       APP_VERSION,
 
     backupVersion:
-      1,
+      2,
 
     exportedAt:
       new Date()
@@ -5341,7 +5290,7 @@ async function exportData() {
 
 
 /* =====================================
-   iPhone Safari 相容的檔案讀取
+   iPhone Safari 相容檔案讀取
 ===================================== */
 
 function readBackupFile(
@@ -5455,7 +5404,226 @@ function getBackupRecords(
 
 
 /* =====================================
+   正規化文字
+===================================== */
+
+function normalizeText(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .trim()
+    .toLowerCase();
+}
+
+
+/* =====================================
+   建立重複判斷 Key
+
+   目前使用：
+   日期
+   時間
+   店家
+   餐點
+   幣別
+   金額
+   GPS 座標
+
+   不使用 note / rating，
+   避免使用者後來修改備註或評分後，
+   同一筆備份又被當成新紀錄。
+===================================== */
+
+function makeRecordDuplicateKey(
+  record
+) {
+
+  const date =
+    normalizeText(
+      record.date
+    );
+
+
+  const time =
+    normalizeText(
+      record.time
+    );
+
+
+  const store =
+    normalizeText(
+      record.store
+    );
+
+
+  const food =
+    normalizeText(
+      record.food
+    );
+
+
+  const currency =
+    normalizeText(
+      record.currency
+    );
+
+
+  const amount =
+
+    record.amount === null ||
+    record.amount === undefined ||
+    record.amount === ""
+
+      ? ""
+
+      : String(
+          Number(
+            record.amount
+          )
+        );
+
+
+  const lat =
+
+    record.latitude === null ||
+    record.latitude === undefined
+
+      ? ""
+
+      : Number(
+          record.latitude
+        )
+        .toFixed(
+          5
+        );
+
+
+  const lon =
+
+    record.longitude === null ||
+    record.longitude === undefined
+
+      ? ""
+
+      : Number(
+          record.longitude
+        )
+        .toFixed(
+          5
+        );
+
+
+  return [
+
+    date,
+    time,
+    store,
+    food,
+    currency,
+    amount,
+    lat,
+    lon
+
+  ].join(
+    "|"
+  );
+}
+
+
+/* =====================================
+   清理匯入紀錄
+===================================== */
+
+function prepareImportedRecord(
+  originalRecord
+) {
+
+  if (
+    !originalRecord ||
+    typeof originalRecord !==
+    "object" ||
+    Array.isArray(
+      originalRecord
+    )
+  ) {
+
+    return null;
+  }
+
+
+  const record = {
+    ...originalRecord
+  };
+
+
+  /*
+    不沿用舊 IndexedDB ID
+  */
+
+  delete record.id;
+
+
+  /*
+    timestamp 補齊
+  */
+
+  if (
+    !record.timestamp
+  ) {
+
+    if (
+      record.date
+    ) {
+
+      record.timestamp =
+        record.date +
+        "T" +
+        (
+          record.time ||
+          "00:00"
+        );
+
+    } else {
+
+      record.timestamp =
+        new Date()
+          .toISOString()
+          .slice(
+            0,
+            16
+          );
+    }
+  }
+
+
+  /*
+    createdAt 補齊
+  */
+
+  if (
+    !record.createdAt
+  ) {
+
+    record.createdAt =
+      new Date()
+        .toISOString();
+  }
+
+
+  record.importedByVersion =
+    APP_VERSION;
+
+
+  return record;
+}
+
+
+/* =====================================
    匯入備份
+   V2.2.0：
+   自動略過重複紀錄
 ===================================== */
 
 document
@@ -5495,6 +5663,10 @@ document
         }
 
 
+        /* -----------------------------
+           讀取備份
+        ----------------------------- */
+
         const text =
           await readBackupFile(
             file
@@ -5530,7 +5702,7 @@ document
         }
 
 
-        const records =
+        const backupRecords =
           getBackupRecords(
             data
           );
@@ -5538,7 +5710,7 @@ document
 
         if (
           !Array.isArray(
-            records
+            backupRecords
           )
         ) {
 
@@ -5549,13 +5721,116 @@ document
 
 
         if (
-          records.length === 0
+          backupRecords.length === 0
         ) {
 
           throw new Error(
             "備份內沒有任何紀錄"
           );
         }
+
+
+        /* -----------------------------
+           取得目前既有紀錄
+        ----------------------------- */
+
+        const existingRecords =
+          await getAllRecords();
+
+
+        const existingKeys =
+          new Set();
+
+
+        existingRecords.forEach(
+          record => {
+
+            existingKeys.add(
+              makeRecordDuplicateKey(
+                record
+              )
+            );
+
+          }
+        );
+
+
+        /* -----------------------------
+           分析備份
+        ----------------------------- */
+
+        const recordsToImport =
+          [];
+
+
+        let duplicateCount =
+          0;
+
+
+        let invalidCount =
+          0;
+
+
+        /*
+          這個 Set 也避免備份檔本身
+          就含有兩筆完全相同紀錄。
+        */
+
+        const backupSeenKeys =
+          new Set();
+
+
+        backupRecords.forEach(
+          originalRecord => {
+
+            const record =
+              prepareImportedRecord(
+                originalRecord
+              );
+
+
+            if (
+              !record
+            ) {
+
+              invalidCount++;
+
+              return;
+            }
+
+
+            const key =
+              makeRecordDuplicateKey(
+                record
+              );
+
+
+            if (
+              existingKeys.has(
+                key
+              ) ||
+              backupSeenKeys.has(
+                key
+              )
+            ) {
+
+              duplicateCount++;
+
+              return;
+            }
+
+
+            backupSeenKeys.add(
+              key
+            );
+
+
+            recordsToImport.push(
+              record
+            );
+
+          }
+        );
 
 
         const backupAppVersion =
@@ -5565,6 +5840,60 @@ document
             : "舊版";
 
 
+        /* -----------------------------
+           全部都是重複
+        ----------------------------- */
+
+        if (
+          recordsToImport.length === 0
+        ) {
+
+          input.value =
+            "";
+
+
+          alert(
+
+            "ℹ️ 沒有需要匯入的新紀錄" +
+
+            "\n\n" +
+
+            "備份版本：" +
+            backupAppVersion +
+
+            "\n" +
+
+            "備份共 " +
+            backupRecords.length +
+            " 筆" +
+
+            "\n" +
+
+            "重複紀錄：" +
+            duplicateCount +
+            " 筆" +
+
+            (
+              invalidCount > 0
+
+                ? "\n無效紀錄：" +
+                  invalidCount +
+                  " 筆"
+
+                : ""
+            )
+
+          );
+
+
+          return;
+        }
+
+
+        /* -----------------------------
+           匯入前確認
+        ----------------------------- */
+
         const confirmed =
           confirm(
 
@@ -5573,21 +5902,35 @@ document
 
             "\n" +
 
-            "找到 " +
-            records.length +
-            " 筆紀錄。" +
+            "備份共 " +
+            backupRecords.length +
+            " 筆" +
 
             "\n\n" +
 
-            "匯入方式：加入目前資料" +
+            "可新增：" +
+            recordsToImport.length +
+            " 筆" +
 
             "\n" +
 
-            "不會刪除現在已有的紀錄。" +
+            "重複跳過：" +
+            duplicateCount +
+            " 筆" +
+
+            (
+              invalidCount > 0
+
+                ? "\n無效跳過：" +
+                  invalidCount +
+                  " 筆"
+
+                : ""
+            ) +
 
             "\n\n" +
 
-            "是否繼續？"
+            "是否開始匯入？"
 
           );
 
@@ -5603,6 +5946,10 @@ document
         }
 
 
+        /* -----------------------------
+           寫入 IndexedDB
+        ----------------------------- */
+
         const transaction =
           db.transaction(
             STORE_NAME,
@@ -5616,115 +5963,15 @@ document
           );
 
 
-        let importCount =
-          0;
-
-
-        records.forEach(
-          originalRecord => {
-
-            if (
-              !originalRecord ||
-              typeof originalRecord !==
-              "object" ||
-              Array.isArray(
-                originalRecord
-              )
-            ) {
-
-              return;
-            }
-
-
-            const record = {
-              ...originalRecord
-            };
-
-
-            /*
-              不沿用備份內的 IndexedDB ID。
-              由目前瀏覽器重新產生。
-            */
-
-            delete record.id;
-
-
-            /*
-              舊備份沒有 timestamp 時自動補上。
-            */
-
-            if (
-              !record.timestamp
-            ) {
-
-              if (
-                record.date
-              ) {
-
-                record.timestamp =
-                  record.date +
-                  "T" +
-                  (
-                    record.time ||
-                    "00:00"
-                  );
-
-              } else {
-
-                record.timestamp =
-                  new Date()
-                    .toISOString()
-                    .slice(
-                      0,
-                      16
-                    );
-              }
-            }
-
-
-            /*
-              舊備份沒有 createdAt 時自動補上。
-            */
-
-            if (
-              !record.createdAt
-            ) {
-
-              record.createdAt =
-                new Date()
-                  .toISOString();
-            }
-
-
-            /*
-              記錄最後一次經過哪個版本匯入。
-            */
-
-            record.importedByVersion =
-              APP_VERSION;
-
+        recordsToImport.forEach(
+          record => {
 
             store.add(
               record
             );
 
-
-            importCount++;
-
           }
         );
-
-
-        if (
-          importCount === 0
-        ) {
-
-          transaction.abort();
-
-          throw new Error(
-            "備份中沒有可匯入的有效紀錄"
-          );
-        }
 
 
         transaction.oncomplete =
@@ -5743,9 +5990,25 @@ document
 
               "\n\n" +
 
-              "成功加入 " +
-              importCount +
-              " 筆紀錄"
+              "新增：" +
+              recordsToImport.length +
+              " 筆" +
+
+              "\n" +
+
+              "重複跳過：" +
+              duplicateCount +
+              " 筆" +
+
+              (
+                invalidCount > 0
+
+                  ? "\n無效跳過：" +
+                    invalidCount +
+                    " 筆"
+
+                  : ""
+              )
 
             );
           };
@@ -5777,20 +6040,6 @@ document
               )
 
             );
-          };
-
-
-        transaction.onabort =
-          () => {
-
-            console.error(
-              "Import Aborted:",
-              transaction.error
-            );
-
-
-            input.value =
-              "";
           };
 
 
@@ -5859,7 +6108,7 @@ function escapeHTML(
 
 
 /* =====================================
-   版號
+   顯示版號
 ===================================== */
 
 function showVersion() {
@@ -5946,4 +6195,5 @@ init();
 </script>
 
 </body>
+
 </html>
