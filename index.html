@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f4ee">
-  <title>旅遊美食日誌</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f7f4ee"
+  >
+
+  <title>
+    旅遊美食日誌
+  </title>
+
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
+
     body {
       margin: 0;
-      background: #f7f4ee;
-      color: #252525;
+
+      background:
+        #f7f4ee;
+
+      color:
+        #252525;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -22,491 +42,1148 @@
         sans-serif;
     }
 
+
     .container {
-      width: min(720px, 100%);
-      margin: 0 auto;
+
+      width:
+        min(
+          720px,
+          100%
+        );
+
+      margin:
+        0 auto;
+
       padding:
-        calc(18px + env(safe-area-inset-top))
+        calc(
+          18px +
+          env(
+            safe-area-inset-top
+          )
+        )
         16px
-        calc(45px + env(safe-area-inset-bottom));
+        calc(
+          45px +
+          env(
+            safe-area-inset-bottom
+          )
+        );
     }
+
 
     .header {
-      text-align: center;
-      margin-bottom: 18px;
+
+      text-align:
+        center;
+
+      margin-bottom:
+        18px;
     }
+
 
     .header h1 {
-      margin: 0;
-      font-size: 28px;
+
+      margin:
+        0;
+
+      font-size:
+        28px;
     }
+
 
     .header p {
-      margin: 8px 0 0;
-      color: #777;
-      font-size: 14px;
+
+      margin:
+        8px 0 0;
+
+      color:
+        #777;
+
+      font-size:
+        14px;
     }
+
+
+    .version-badge {
+
+      display:
+        inline-block;
+
+      margin-top:
+        8px;
+
+      padding:
+        4px 9px;
+
+      border-radius:
+        999px;
+
+      background:
+        #ece8df;
+
+      color:
+        #777;
+
+      font-size:
+        11px;
+
+      font-weight:
+        600;
+    }
+
 
     .card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+
+      background:
+        #fff;
+
+      border-radius:
+        18px;
+
+      padding:
+        18px;
+
+      margin-bottom:
+        16px;
+
+      box-shadow:
+        0
+        4px
+        20px
+        rgba(
+          0,
+          0,
+          0,
+          .06
+        );
     }
+
 
     h2 {
-      margin: 0 0 10px;
-      font-size: 20px;
+
+      margin:
+        0 0 10px;
+
+      font-size:
+        20px;
     }
 
+
     label {
-      display: block;
-      margin: 15px 0 7px;
-      font-size: 14px;
-      font-weight: 700;
+
+      display:
+        block;
+
+      margin:
+        15px 0 7px;
+
+      font-size:
+        14px;
+
+      font-weight:
+        700;
     }
+
 
     input,
     select,
     textarea {
-      width: 100%;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 12px;
-      background: #fff;
-      color: #222;
-      font-size: 16px;
+
+      width:
+        100%;
+
+      border:
+        1px solid #ddd;
+
+      border-radius:
+        12px;
+
+      padding:
+        12px;
+
+      background:
+        #fff;
+
+      color:
+        #222;
+
+      font-size:
+        16px;
     }
+
 
     textarea {
-      min-height: 90px;
-      resize: vertical;
+
+      min-height:
+        90px;
+
+      resize:
+        vertical;
     }
+
 
     button {
-      border: 0;
-      border-radius: 12px;
-      padding: 12px 15px;
-      font-size: 16px;
-      cursor: pointer;
-      touch-action: manipulation;
+
+      border:
+        0;
+
+      border-radius:
+        12px;
+
+      padding:
+        12px 15px;
+
+      font-size:
+        16px;
+
+      cursor:
+        pointer;
+
+      touch-action:
+        manipulation;
     }
+
 
     button:disabled {
-      opacity: .55;
-      cursor: default;
+
+      opacity:
+        .55;
+
+      cursor:
+        default;
     }
+
 
     .btn-primary {
-      width: 100%;
-      margin-top: 17px;
-      background: #e96c43;
-      color: #fff;
-      font-weight: 700;
+
+      width:
+        100%;
+
+      margin-top:
+        17px;
+
+      background:
+        #e96c43;
+
+      color:
+        #fff;
+
+      font-weight:
+        700;
     }
+
 
     .btn-secondary {
-      background: #efefef;
-      color: #333;
+
+      background:
+        #efefef;
+
+      color:
+        #333;
     }
+
 
     .btn-danger {
-      background: #ffe8e8;
-      color: #b00020;
+
+      background:
+        #ffe8e8;
+
+      color:
+        #b00020;
     }
+
 
     .btn-location {
-      width: 100%;
-      margin-top: 7px;
-      background: #eaf3ff;
-      color: #245b9e;
-      font-weight: 700;
+
+      width:
+        100%;
+
+      margin-top:
+        7px;
+
+      background:
+        #eaf3ff;
+
+      color:
+        #245b9e;
+
+      font-weight:
+        700;
     }
+
 
     .grid2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        10px;
     }
+
 
     .money-row {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 10px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        130px 1fr;
+
+      gap:
+        10px;
     }
+
 
     .timezone {
-      margin-top: 7px;
-      color: #777;
-      font-size: 13px;
+
+      margin-top:
+        7px;
+
+      color:
+        #777;
+
+      font-size:
+        13px;
     }
+
 
     .location-box {
-      margin-top: 10px;
-      padding: 12px;
-      background: #f5f8fc;
-      border-radius: 12px;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.7;
+
+      margin-top:
+        10px;
+
+      padding:
+        12px;
+
+      background:
+        #f5f8fc;
+
+      border-radius:
+        12px;
+
+      color:
+        #555;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
     }
+
 
     .address-box {
-      display: none;
-      margin-top: 10px;
-      padding: 12px;
-      background: #f4faf4;
-      border-radius: 12px;
-      color: #445544;
-      font-size: 14px;
-      line-height: 1.6;
+
+      display:
+        none;
+
+      margin-top:
+        10px;
+
+      padding:
+        12px;
+
+      background:
+        #f4faf4;
+
+      border-radius:
+        12px;
+
+      color:
+        #445544;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.6;
     }
+
 
     .address-title {
-      margin-bottom: 5px;
-      color: #327043;
-      font-weight: 700;
+
+      margin-bottom:
+        5px;
+
+      color:
+        #327043;
+
+      font-weight:
+        700;
     }
+
 
     .nearby-wrap {
-      display: none;
-      margin-top: 13px;
+
+      display:
+        none;
+
+      margin-top:
+        13px;
     }
+
 
     .nearby-title {
-      margin-bottom: 5px;
-      font-size: 15px;
-      font-weight: 700;
+
+      margin-bottom:
+        5px;
+
+      font-size:
+        15px;
+
+      font-weight:
+        700;
     }
+
 
     .nearby-note {
-      margin-bottom: 9px;
-      color: #888;
-      font-size: 12px;
+
+      margin-bottom:
+        9px;
+
+      color:
+        #888;
+
+      font-size:
+        12px;
     }
+
 
     .nearby-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      gap:
+        8px;
     }
+
 
     .nearby-item {
-      width: 100%;
-      padding: 11px 12px;
-      background: #fff;
-      border: 1px solid #e3e3e3;
-      border-radius: 12px;
-      text-align: left;
+
+      width:
+        100%;
+
+      padding:
+        11px 12px;
+
+      background:
+        #fff;
+
+      border:
+        1px solid #e3e3e3;
+
+      border-radius:
+        12px;
+
+      text-align:
+        left;
     }
+
 
     .nearby-name {
-      display: block;
-      font-size: 15px;
-      font-weight: 700;
+
+      display:
+        block;
+
+      font-size:
+        15px;
+
+      font-weight:
+        700;
     }
+
 
     .nearby-meta {
-      display: block;
-      margin-top: 4px;
-      color: #777;
-      font-size: 12px;
+
+      display:
+        block;
+
+      margin-top:
+        4px;
+
+      color:
+        #777;
+
+      font-size:
+        12px;
     }
+
 
     .status-text {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.5;
+
+      color:
+        #777;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.5;
     }
+
 
     .selected-shop {
-      display: none;
-      margin-top: 7px;
-      color: #31724a;
-      font-size: 13px;
+
+      display:
+        none;
+
+      margin-top:
+        7px;
+
+      color:
+        #31724a;
+
+      font-size:
+        13px;
     }
+
 
     .star-group {
-      display: flex;
-      gap: 5px;
-      margin-top: 4px;
-      font-size: 34px;
+
+      display:
+        flex;
+
+      gap:
+        5px;
+
+      margin-top:
+        4px;
+
+      font-size:
+        34px;
     }
+
 
     .star {
-      color: #ccc;
-      cursor: pointer;
-      user-select: none;
+
+      color:
+        #ccc;
+
+      cursor:
+        pointer;
+
+      user-select:
+        none;
     }
+
 
     .star.active {
-      color: #f6b800;
+
+      color:
+        #f6b800;
     }
+
 
     .photo-preview {
-      display: none;
-      width: 100%;
-      max-height: 400px;
-      margin-top: 10px;
-      object-fit: cover;
-      border-radius: 14px;
+
+      display:
+        none;
+
+      width:
+        100%;
+
+      max-height:
+        400px;
+
+      margin-top:
+        10px;
+
+      object-fit:
+        cover;
+
+      border-radius:
+        14px;
     }
+
 
     .small {
-      margin-top: 6px;
-      color: #888;
-      font-size: 12px;
+
+      margin-top:
+        6px;
+
+      color:
+        #888;
+
+      font-size:
+        12px;
     }
 
+
     .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        18px;
     }
+
 
     .toolbar button,
     .toolbar label {
-      flex: 1;
-      min-width: 130px;
-      margin: 0;
-      text-align: center;
+
+      flex:
+        1;
+
+      min-width:
+        130px;
+
+      margin:
+        0;
+
+      text-align:
+        center;
     }
+
 
     .import-label {
-      padding: 12px 15px;
-      background: #efefef;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 400;
+
+      padding:
+        12px 15px;
+
+      background:
+        #efefef;
+
+      border-radius:
+        12px;
+
+      cursor:
+        pointer;
+
+      font-size:
+        16px;
+
+      font-weight:
+        400;
     }
+
 
     .summary-card {
-      padding: 16px;
+
+      padding:
+        16px;
     }
+
 
     .summary-title {
-      margin-bottom: 12px;
-      font-size: 17px;
-      font-weight: 700;
+
+      margin-bottom:
+        12px;
+
+      font-size:
+        17px;
+
+      font-weight:
+        700;
     }
+
 
     .summary-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        10px;
     }
+
 
     .summary-item {
-      background: #faf8f3;
-      border-radius: 14px;
-      padding: 13px;
+
+      background:
+        #faf8f3;
+
+      border-radius:
+        14px;
+
+      padding:
+        13px;
     }
+
 
     .summary-label {
-      color: #777;
-      font-size: 12px;
+
+      color:
+        #777;
+
+      font-size:
+        12px;
     }
+
 
     .summary-value {
-      margin-top: 5px;
-      font-size: 21px;
-      font-weight: 750;
+
+      margin-top:
+        5px;
+
+      font-size:
+        21px;
+
+      font-weight:
+        750;
     }
+
 
     .summary-rating {
-      color: #f2a900;
+
+      color:
+        #f2a900;
     }
+
 
     .search-card {
-      padding: 14px;
+
+      padding:
+        14px;
     }
+
 
     .search-wrap {
-      position: relative;
+
+      position:
+        relative;
     }
+
 
     .search-input {
-      padding-left: 42px;
+
+      padding-left:
+        42px;
     }
+
 
     .search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #888;
-      pointer-events: none;
+
+      position:
+        absolute;
+
+      left:
+        14px;
+
+      top:
+        50%;
+
+      transform:
+        translateY(
+          -50%
+        );
+
+      color:
+        #888;
+
+      pointer-events:
+        none;
     }
+
 
     .search-result-info {
-      margin-top: 8px;
-      color: #777;
-      font-size: 12px;
+
+      margin-top:
+        8px;
+
+      color:
+        #777;
+
+      font-size:
+        12px;
     }
+
 
     .date-group {
-      margin-bottom: 14px;
+
+      margin-bottom:
+        14px;
     }
+
 
     .date-header {
-      width: 100%;
-      padding: 14px 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 3px 14px rgba(0, 0, 0, .05);
-      text-align: left;
+
+      width:
+        100%;
+
+      padding:
+        14px 15px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        12px;
+
+      background:
+        #fff;
+
+      border-radius:
+        16px;
+
+      box-shadow:
+        0
+        3px
+        14px
+        rgba(
+          0,
+          0,
+          0,
+          .05
+        );
+
+      text-align:
+        left;
     }
+
 
     .date-title {
-      font-size: 17px;
-      font-weight: 750;
+
+      font-size:
+        17px;
+
+      font-weight:
+        750;
     }
+
 
     .date-summary {
-      margin-top: 4px;
-      color: #777;
-      font-size: 12px;
-      line-height: 1.5;
+
+      margin-top:
+        4px;
+
+      color:
+        #777;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
     }
+
 
     .date-toggle {
-      flex: 0 0 auto;
-      color: #777;
-      font-size: 18px;
-      transition: transform .2s;
+
+      flex:
+        0 0 auto;
+
+      color:
+        #777;
+
+      font-size:
+        18px;
+
+      transition:
+        transform .2s;
     }
 
-    .date-group.collapsed .date-toggle {
-      transform: rotate(-90deg);
+
+    .date-group.collapsed
+    .date-toggle {
+
+      transform:
+        rotate(
+          -90deg
+        );
     }
+
 
     .date-records {
-      margin-top: 10px;
+
+      margin-top:
+        10px;
     }
 
-    .date-group.collapsed .date-records {
-      display: none;
+
+    .date-group.collapsed
+    .date-records {
+
+      display:
+        none;
     }
+
 
     .record-date {
-      color: #777;
-      font-size: 13px;
+
+      color:
+        #777;
+
+      font-size:
+        13px;
     }
+
 
     .record-store {
-      margin-top: 7px;
-      font-size: 21px;
-      font-weight: 700;
+
+      margin-top:
+        7px;
+
+      font-size:
+        21px;
+
+      font-weight:
+        700;
     }
+
 
     .record-food {
-      margin-top: 6px;
-      font-size: 17px;
+
+      margin-top:
+        6px;
+
+      font-size:
+        17px;
     }
+
 
     .record-photo {
-      width: 100%;
-      max-height: 430px;
-      margin: 12px 0;
-      object-fit: cover;
-      border-radius: 14px;
+
+      width:
+        100%;
+
+      max-height:
+        430px;
+
+      margin:
+        12px 0;
+
+      object-fit:
+        cover;
+
+      border-radius:
+        14px;
     }
+
 
     .record-stars {
-      margin-top: 7px;
-      color: #f6b800;
-      font-size: 20px;
+
+      margin-top:
+        7px;
+
+      color:
+        #f6b800;
+
+      font-size:
+        20px;
     }
+
 
     .record-meta {
-      margin-top: 8px;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.7;
+
+      margin-top:
+        8px;
+
+      color:
+        #555;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
     }
+
 
     .record-address {
-      margin-top: 9px;
-      padding: 10px;
-      background: #f4faf4;
-      border-radius: 10px;
-      color: #4b604b;
-      font-size: 13px;
-      line-height: 1.6;
+
+      margin-top:
+        9px;
+
+      padding:
+        10px;
+
+      background:
+        #f4faf4;
+
+      border-radius:
+        10px;
+
+      color:
+        #4b604b;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.6;
     }
+
 
     .record-note {
-      margin-top: 10px;
-      padding: 12px;
-      background: #faf8f2;
-      border-radius: 12px;
-      white-space: pre-wrap;
+
+      margin-top:
+        10px;
+
+      padding:
+        12px;
+
+      background:
+        #faf8f2;
+
+      border-radius:
+        12px;
+
+      white-space:
+        pre-wrap;
     }
+
 
     .record-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 14px;
+
+      display:
+        flex;
+
+      gap:
+        8px;
+
+      margin-top:
+        14px;
     }
+
 
     .record-actions button {
-      flex: 1;
+
+      flex:
+        1;
     }
+
 
     .empty {
-      padding: 30px 10px;
-      color: #999;
-      text-align: center;
+
+      padding:
+        30px 10px;
+
+      color:
+        #999;
+
+      text-align:
+        center;
     }
+
 
     #editIndicator {
-      display: none;
-      margin-bottom: 12px;
-      padding: 10px;
-      background: #fff5d9;
-      border-radius: 10px;
-      color: #805e00;
-      font-size: 14px;
+
+      display:
+        none;
+
+      margin-bottom:
+        12px;
+
+      padding:
+        10px;
+
+      background:
+        #fff5d9;
+
+      border-radius:
+        10px;
+
+      color:
+        #805e00;
+
+      font-size:
+        14px;
     }
+
 
     .source-note {
-      margin-top: 12px;
-      color: #999;
-      font-size: 11px;
-      line-height: 1.5;
+
+      margin-top:
+        12px;
+
+      color:
+        #999;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.5;
     }
 
-    @media(max-width:450px) {
+
+    @media(
+      max-width:450px
+    ) {
+
       .grid2 {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
       }
+
 
       .money-row {
-        grid-template-columns: 115px 1fr;
+
+        grid-template-columns:
+          115px 1fr;
       }
 
+
       .header h1 {
-        font-size: 25px;
+
+        font-size:
+          25px;
       }
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
+
+  <!-- =====================================
+       標題
+  ====================================== -->
+
   <div class="header">
-    <h1>🍜 旅遊美食日誌</h1>
-    <p>記錄旅途中吃過的每一道美食</p>
+
+    <h1>
+      🍜 旅遊美食日誌
+    </h1>
+
+    <p>
+      記錄旅途中吃過的每一道美食
+    </p>
+
+    <div
+      id="versionText"
+      class="version-badge"
+    >
+      V2.1.0
+    </div>
+
   </div>
+
+
+  <!-- =====================================
+       統計
+  ====================================== -->
 
   <div class="card summary-card">
 
@@ -514,9 +1191,12 @@
       📊 美食紀錄統計
     </div>
 
+
     <div class="summary-grid">
 
+
       <div class="summary-item">
+
         <div class="summary-label">
           紀錄數
         </div>
@@ -527,9 +1207,12 @@
         >
           0
         </div>
+
       </div>
 
+
       <div class="summary-item">
+
         <div class="summary-label">
           平均評分
         </div>
@@ -540,9 +1223,12 @@
         >
           -
         </div>
+
       </div>
 
+
       <div class="summary-item">
+
         <div class="summary-label">
           台幣總額
         </div>
@@ -553,9 +1239,12 @@
         >
           NT$0
         </div>
+
       </div>
 
+
       <div class="summary-item">
+
         <div class="summary-label">
           日幣總額
         </div>
@@ -566,11 +1255,18 @@
         >
           ¥0
         </div>
+
       </div>
+
 
     </div>
 
   </div>
+
+
+  <!-- =====================================
+       搜尋
+  ====================================== -->
 
   <div class="card search-card">
 
@@ -590,6 +1286,7 @@
 
     </div>
 
+
     <div
       id="searchResultInfo"
       class="search-result-info"
@@ -599,37 +1296,56 @@
 
   </div>
 
+
+  <!-- =====================================
+       新增 / 編輯紀錄
+  ====================================== -->
+
   <div class="card">
 
     <h2>
       新增美食紀錄
     </h2>
 
+
     <div id="editIndicator">
       ✏️ 目前正在編輯既有紀錄
     </div>
 
+
     <div class="grid2">
 
+
       <div>
-        <label>📅 日期</label>
+
+        <label>
+          📅 日期
+        </label>
 
         <input
           type="date"
           id="date"
         >
+
       </div>
 
+
       <div>
-        <label>🕒 時間</label>
+
+        <label>
+          🕒 時間
+        </label>
 
         <input
           type="time"
           id="time"
         >
+
       </div>
 
+
     </div>
+
 
     <div
       id="timezoneText"
@@ -638,9 +1354,13 @@
       偵測時區中...
     </div>
 
+
+    <!-- GPS -->
+
     <label>
       📍 GPS / 地址 / 附近店家
     </label>
+
 
     <button
       id="locationButton"
@@ -651,12 +1371,16 @@
       📍 取得目前位置＋搜尋附近店家
     </button>
 
+
     <div
       id="locationBox"
       class="location-box"
     >
       尚未取得位置
     </div>
+
+
+    <!-- 地址 -->
 
     <div
       id="addressBox"
@@ -670,6 +1394,9 @@
       <div id="addressText"></div>
 
     </div>
+
+
+    <!-- 附近店家 -->
 
     <div
       id="nearbyWrap"
@@ -691,9 +1418,13 @@
 
     </div>
 
+
+    <!-- 店家 -->
+
     <label>
       🏪 店家名稱
     </label>
+
 
     <input
       type="text"
@@ -701,14 +1432,19 @@
       placeholder="例如：一蘭拉麵 天神店"
     >
 
+
     <div
       id="selectedShop"
       class="selected-shop"
     ></div>
 
+
+    <!-- 餐點 -->
+
     <label>
       🍽️ 吃了什麼
     </label>
+
 
     <input
       type="text"
@@ -716,11 +1452,16 @@
       placeholder="例如：天然豚骨拉麵、半熟蛋"
     >
 
+
+    <!-- 金額 -->
+
     <label>
       💰 金額
     </label>
 
+
     <div class="money-row">
+
 
       <select id="currency">
 
@@ -734,6 +1475,7 @@
 
       </select>
 
+
       <input
         type="number"
         id="amount"
@@ -743,28 +1485,66 @@
         placeholder="1480"
       >
 
+
     </div>
+
+
+    <!-- 評分 -->
 
     <label>
       ⭐ 評分
     </label>
+
 
     <div
       id="starGroup"
       class="star-group"
     >
 
-      <span class="star" data-value="1">★</span>
-      <span class="star" data-value="2">★</span>
-      <span class="star" data-value="3">★</span>
-      <span class="star" data-value="4">★</span>
-      <span class="star" data-value="5">★</span>
+      <span
+        class="star"
+        data-value="1"
+      >
+        ★
+      </span>
+
+      <span
+        class="star"
+        data-value="2"
+      >
+        ★
+      </span>
+
+      <span
+        class="star"
+        data-value="3"
+      >
+        ★
+      </span>
+
+      <span
+        class="star"
+        data-value="4"
+      >
+        ★
+      </span>
+
+      <span
+        class="star"
+        data-value="5"
+      >
+        ★
+      </span>
 
     </div>
+
+
+    <!-- 照片 -->
 
     <label>
       📷 美食照片
     </label>
+
 
     <input
       type="file"
@@ -772,9 +1552,11 @@
       accept="image/*"
     >
 
+
     <div class="small">
       iPhone 可直接拍照或從照片圖庫選取
     </div>
+
 
     <img
       id="photoPreview"
@@ -782,14 +1564,21 @@
       alt="照片預覽"
     >
 
+
+    <!-- 備註 -->
+
     <label>
       📝 備註
     </label>
+
 
     <textarea
       id="note"
       placeholder="例如：排隊約 20 分鐘、湯頭偏濃，下次還會再來"
     ></textarea>
+
+
+    <!-- 儲存 -->
 
     <button
       id="saveButton"
@@ -799,6 +1588,7 @@
     >
       ＋ 儲存美食紀錄
     </button>
+
 
     <button
       id="cancelEditButton"
@@ -814,14 +1604,23 @@
       取消編輯
     </button>
 
+
     <div class="source-note">
-      地址與附近店家資料來源為 OpenStreetMap、Nominatim、Overpass。
+      地址與附近店家資料來源為
+      OpenStreetMap、Nominatim、Overpass。
       不同地區的店家資料完整度可能不同。
     </div>
 
+
   </div>
 
+
+  <!-- =====================================
+       備份
+  ====================================== -->
+
   <div class="toolbar">
+
 
     <button
       class="btn-secondary"
@@ -831,6 +1630,7 @@
       📤 匯出備份
     </button>
 
+
     <label class="import-label">
 
       📥 匯入備份
@@ -838,19 +1638,30 @@
       <input
         type="file"
         id="importInput"
-        accept=".json,application/json"
+        accept=".json,application/json,text/json"
         style="display:none"
       >
 
     </label>
 
+
   </div>
+
+
+  <!-- =====================================
+       紀錄
+  ====================================== -->
 
   <div id="records"></div>
 
+
 </div>
 
+
 <script>
+
+const APP_VERSION = "2.1.0";
+
 const DB_NAME = "TravelFoodDiaryDB";
 const DB_VERSION = 1;
 const STORE_NAME = "foodRecords";
@@ -869,6 +1680,7 @@ let nearbyPlaces = [];
 let currentPhoto = null;
 
 let rating = 0;
+
 let editingId = null;
 
 let allRecordsCache = [];
@@ -892,28 +1704,34 @@ function openDB() {
         DB_VERSION
       );
 
-    request.onerror = () => {
 
-      reject(
-        request.error
-      );
-    };
+    request.onerror =
+      () => {
 
-    request.onsuccess = () => {
+        reject(
+          request.error
+        );
+      };
 
-      db =
-        request.result;
 
-      resolve(
-        db
-      );
-    };
+    request.onsuccess =
+      () => {
+
+        db =
+          request.result;
+
+        resolve(
+          db
+        );
+      };
+
 
     request.onupgradeneeded =
       event => {
 
         const database =
           event.target.result;
+
 
         if (
           !database
@@ -928,20 +1746,26 @@ function openDB() {
               .createObjectStore(
                 STORE_NAME,
                 {
-                  keyPath: "id",
-                  autoIncrement: true
+                  keyPath:
+                    "id",
+
+                  autoIncrement:
+                    true
                 }
               );
+
 
           store.createIndex(
             "timestamp",
             "timestamp",
             {
-              unique: false
+              unique:
+                false
             }
           );
         }
       };
+
   });
 }
 
@@ -955,40 +1779,50 @@ function setCurrentDateTime() {
   const now =
     new Date();
 
+
   const year =
     now.getFullYear();
+
 
   const month =
     String(
       now.getMonth() + 1
-    ).padStart(
+    )
+    .padStart(
       2,
       "0"
     );
+
 
   const day =
     String(
       now.getDate()
-    ).padStart(
+    )
+    .padStart(
       2,
       "0"
     );
+
 
   const hour =
     String(
       now.getHours()
-    ).padStart(
+    )
+    .padStart(
       2,
       "0"
     );
 
+
   const minute =
     String(
       now.getMinutes()
-    ).padStart(
+    )
+    .padStart(
       2,
       "0"
     );
+
 
   document
     .getElementById(
@@ -996,6 +1830,7 @@ function setCurrentDateTime() {
     )
     .value =
       `${year}-${month}-${day}`;
+
 
   document
     .getElementById(
@@ -1018,14 +1853,17 @@ function getTimezoneInfo() {
       .resolvedOptions()
       .timeZone;
 
+
   const offsetMinutes =
     -new Date()
       .getTimezoneOffset();
+
 
   const sign =
     offsetMinutes >= 0
       ? "+"
       : "-";
+
 
   const hours =
     Math.floor(
@@ -1034,13 +1872,16 @@ function getTimezoneInfo() {
       ) / 60
     );
 
+
   const minutes =
     Math.abs(
       offsetMinutes
     ) % 60;
 
+
   let gmt =
     `GMT${sign}${hours}`;
+
 
   if (
     minutes !== 0
@@ -1050,16 +1891,22 @@ function getTimezoneInfo() {
       ":" +
       String(
         minutes
-      ).padStart(
+      )
+      .padStart(
         2,
         "0"
       );
   }
 
+
   return {
+
     timezone,
+
     gmt,
+
     offsetMinutes
+
   };
 }
 
@@ -1068,6 +1915,7 @@ function showTimezone() {
 
   const info =
     getTimezoneInfo();
+
 
   document
     .getElementById(
@@ -1085,7 +1933,10 @@ function showTimezone() {
 function getGPSPosition() {
 
   return new Promise(
-    (resolve, reject) => {
+    (
+      resolve,
+      reject
+    ) => {
 
       if (
         !navigator.geolocation
@@ -1100,6 +1951,7 @@ function getGPSPosition() {
         return;
       }
 
+
       navigator
         .geolocation
         .getCurrentPosition(
@@ -1109,12 +1961,20 @@ function getGPSPosition() {
           reject,
 
           {
-            enableHighAccuracy: true,
-            timeout: 20000,
-            maximumAge: 0
+
+            enableHighAccuracy:
+              true,
+
+            timeout:
+              20000,
+
+            maximumAge:
+              0
+
           }
 
         );
+
     }
   );
 }
@@ -1132,11 +1992,13 @@ async function getLocationAndNearby() {
         "locationButton"
       );
 
+
   const locationBox =
     document
       .getElementById(
         "locationBox"
       );
+
 
   const addressBox =
     document
@@ -1144,11 +2006,13 @@ async function getLocationAndNearby() {
         "addressBox"
       );
 
+
   const addressText =
     document
       .getElementById(
         "addressText"
       );
+
 
   const nearbyWrap =
     document
@@ -1156,49 +2020,70 @@ async function getLocationAndNearby() {
         "nearbyWrap"
       );
 
+
   const nearbyList =
     document
       .getElementById(
         "nearbyList"
       );
 
+
   button.disabled =
     true;
+
 
   button.textContent =
     "📡 正在取得 GPS...";
 
+
   locationBox.textContent =
     "正在取得目前位置...";
+
 
   addressBox.style.display =
     "none";
 
+
   nearbyWrap.style.display =
     "none";
+
 
   try {
 
     const position =
       await getGPSPosition();
 
+
     latitude =
       position.coords.latitude;
 
+
     longitude =
       position.coords.longitude;
+
 
     gpsAccuracy =
       Math.round(
         position.coords.accuracy
       );
 
+
     locationBox.innerHTML = `
-      緯度：${latitude.toFixed(6)}
+
+      緯度：
+      ${latitude.toFixed(6)}
+
       <br>
-      經度：${longitude.toFixed(6)}
+
+      經度：
+      ${longitude.toFixed(6)}
+
       <br>
-      GPS 精度：約 ${gpsAccuracy} 公尺
+
+      GPS 精度：約
+      ${gpsAccuracy}
+      公尺
+
       <br><br>
 
       <a
@@ -1208,25 +2093,34 @@ async function getLocationAndNearby() {
       >
         🗺️ 在 Google Maps 開啟
       </a>
+
     `;
+
 
     button.textContent =
       "🔎 正在搜尋地址與附近店家...";
 
+
     addressBox.style.display =
       "block";
+
 
     addressText.textContent =
       "正在辨識地址...";
 
+
     nearbyWrap.style.display =
       "block";
 
+
     nearbyList.innerHTML = `
+
       <div class="status-text">
         正在搜尋附近店家...
       </div>
+
     `;
+
 
     const results =
       await Promise.allSettled([
@@ -1243,6 +2137,9 @@ async function getLocationAndNearby() {
 
       ]);
 
+
+    /* 地址 */
+
     if (
       results[0].status ===
       "fulfilled"
@@ -1251,11 +2148,16 @@ async function getLocationAndNearby() {
       const geo =
         results[0].value;
 
+
       currentAddress =
-        geo.display_name || "";
+        geo.display_name ||
+        "";
+
 
       currentAddressDetails =
-        geo.address || null;
+        geo.address ||
+        null;
+
 
       addressText.textContent =
         formatAddress(
@@ -1267,12 +2169,17 @@ async function getLocationAndNearby() {
       currentAddress =
         "";
 
+
       currentAddressDetails =
         null;
+
 
       addressText.textContent =
         "目前無法自動辨識地址，但 GPS 已經記錄。";
     }
+
+
+    /* 附近店家 */
 
     if (
       results[1].status ===
@@ -1281,6 +2188,7 @@ async function getLocationAndNearby() {
 
       nearbyPlaces =
         results[1].value;
+
 
       renderNearbyPlaces(
         nearbyPlaces
@@ -1291,29 +2199,41 @@ async function getLocationAndNearby() {
       nearbyPlaces =
         [];
 
+
       nearbyList.innerHTML = `
+
         <div class="status-text">
-          目前無法取得附近店家，
+
+          目前無法取得附近店家。
+
+          <br>
+
           你仍然可以手動輸入店名。
+
         </div>
+
       `;
     }
+
 
   } catch (error) {
 
     console.error(
+      "GPS Error:",
       error
     );
 
+
     let message =
       "無法取得 GPS 位置";
+
 
     if (
       error.code === 1
     ) {
 
       message =
-        "定位權限被拒絕，請允許 Safari 使用你的位置。";
+        "定位權限被拒絕，請允許瀏覽器使用你的位置。";
 
     } else if (
       error.code === 2
@@ -1337,13 +2257,16 @@ async function getLocationAndNearby() {
         error.message;
     }
 
+
     locationBox.textContent =
       message;
+
 
   } finally {
 
     button.disabled =
       false;
+
 
     button.textContent =
       "📍 重新定位＋搜尋附近店家";
@@ -1364,13 +2287,17 @@ async function reverseGeocode(
   const controller =
     new AbortController();
 
+
   const timer =
     setTimeout(
       () => {
+
         controller.abort();
+
       },
       12000
     );
+
 
   const url =
     "https://nominatim.openstreetmap.org/reverse" +
@@ -1387,21 +2314,27 @@ async function reverseGeocode(
     "&addressdetails=1" +
     "&accept-language=zh-TW,zh-Hant,zh,en,ja";
 
+
   try {
 
     const response =
       await fetch(
         url,
         {
+
           headers: {
+
             "Accept":
               "application/json"
+
           },
 
           signal:
             controller.signal
+
         }
       );
+
 
     if (
       !response.ok
@@ -1412,7 +2345,9 @@ async function reverseGeocode(
       );
     }
 
+
     return await response.json();
+
 
   } finally {
 
@@ -1438,37 +2373,43 @@ function formatAddress(
     return "";
   }
 
-  const a =
-    geo.address || {};
+
+  const address =
+    geo.address ||
+    {};
+
 
   const parts =
     [];
 
+
   const candidates = [
 
-    a.country,
+    address.country,
 
-    a.state ||
-    a.province ||
-    a.region,
+    address.state ||
+    address.province ||
+    address.region,
 
-    a.city ||
-    a.town ||
-    a.village ||
-    a.municipality ||
-    a.county,
+    address.city ||
+    address.town ||
+    address.village ||
+    address.municipality ||
+    address.county,
 
-    a.city_district ||
-    a.district ||
-    a.suburb ||
-    a.neighbourhood,
+    address.city_district ||
+    address.district ||
+    address.suburb ||
+    address.neighbourhood,
 
-    a.road ||
-    a.pedestrian ||
-    a.footway,
+    address.road ||
+    address.pedestrian ||
+    address.footway,
 
-    a.house_number
+    address.house_number
+
   ];
+
 
   candidates.forEach(
     item => {
@@ -1484,8 +2425,10 @@ function formatAddress(
           item
         );
       }
+
     }
   );
+
 
   if (
     parts.length > 0
@@ -1496,6 +2439,7 @@ function formatAddress(
     );
   }
 
+
   return (
     geo.display_name ||
     ""
@@ -1505,7 +2449,7 @@ function formatAddress(
 
 /* =====================================
    搜尋附近店家
-   Overpass
+   Overpass API
 ===================================== */
 
 async function searchNearbyPlaces(
@@ -1516,17 +2460,28 @@ async function searchNearbyPlaces(
   const radius =
     500;
 
+
   const query = `
+
 [out:json][timeout:18];
 
 (
-  nwr["amenity"~"restaurant|cafe|fast_food|food_court|ice_cream|bar|pub"](around:${radius},${lat},${lon});
 
-  nwr["shop"~"bakery|convenience|deli|pastry|coffee|confectionery"](around:${radius},${lat},${lon});
+  nwr
+  ["amenity"~"restaurant|cafe|fast_food|food_court|ice_cream|bar|pub"]
+  (around:${radius},${lat},${lon});
+
+
+  nwr
+  ["shop"~"bakery|convenience|deli|pastry|coffee|confectionery"]
+  (around:${radius},${lat},${lon});
+
 );
 
 out center tags;
+
   `;
+
 
   const servers = [
 
@@ -1536,8 +2491,10 @@ out center tags;
 
   ];
 
+
   let lastError =
     null;
+
 
   for (
     const server of
@@ -1547,13 +2504,17 @@ out center tags;
     const controller =
       new AbortController();
 
+
     const timer =
       setTimeout(
         () => {
+
           controller.abort();
+
         },
         18000
       );
+
 
     try {
 
@@ -1561,12 +2522,15 @@ out center tags;
         await fetch(
           server,
           {
+
             method:
               "POST",
 
             headers: {
+
               "Content-Type":
                 "application/x-www-form-urlencoded;charset=UTF-8"
+
             },
 
             body:
@@ -1577,8 +2541,10 @@ out center tags;
 
             signal:
               controller.signal
+
           }
         );
+
 
       if (
         !response.ok
@@ -1590,8 +2556,10 @@ out center tags;
         );
       }
 
+
       const data =
         await response.json();
+
 
       return parseNearbyPlaces(
         data,
@@ -1599,10 +2567,12 @@ out center tags;
         lon
       );
 
+
     } catch (error) {
 
       lastError =
         error;
+
 
     } finally {
 
@@ -1611,6 +2581,7 @@ out center tags;
       );
     }
   }
+
 
   throw (
     lastError ||
@@ -1634,13 +2605,16 @@ function parseNearbyPlaces(
   const places =
     [];
 
+
   for (
     const element of
     data.elements || []
   ) {
 
     const tags =
-      element.tags || {};
+      element.tags ||
+      {};
+
 
     const name =
       tags["name:zh-Hant"] ||
@@ -1649,6 +2623,7 @@ function parseNearbyPlaces(
       tags.name ||
       tags.brand;
 
+
     if (
       !name
     ) {
@@ -1656,13 +2631,16 @@ function parseNearbyPlaces(
       continue;
     }
 
+
     const placeLat =
       element.lat ??
       element.center?.lat;
 
+
     const placeLon =
       element.lon ??
       element.center?.lon;
+
 
     if (
       placeLat == null ||
@@ -1671,6 +2649,7 @@ function parseNearbyPlaces(
 
       continue;
     }
+
 
     places.push({
 
@@ -1691,19 +2670,24 @@ function parseNearbyPlaces(
         ),
 
       amenity:
-        tags.amenity || "",
+        tags.amenity ||
+        "",
 
       shop:
-        tags.shop || "",
+        tags.shop ||
+        "",
 
       cuisine:
-        tags.cuisine || ""
+        tags.cuisine ||
+        ""
 
     });
   }
 
+
   const uniqueMap =
     new Map();
+
 
   for (
     const place of
@@ -1714,6 +2698,7 @@ function parseNearbyPlaces(
       place.name
         .trim()
         .toLowerCase();
+
 
     if (
       !uniqueMap.has(
@@ -1732,6 +2717,7 @@ function parseNearbyPlaces(
     }
   }
 
+
   return Array
     .from(
       uniqueMap.values()
@@ -1749,7 +2735,7 @@ function parseNearbyPlaces(
 
 
 /* =====================================
-   距離
+   距離計算
 ===================================== */
 
 function calculateDistance(
@@ -1762,15 +2748,18 @@ function calculateDistance(
   const earthRadius =
     6371000;
 
+
   const p1 =
     lat1 *
     Math.PI /
     180;
 
+
   const p2 =
     lat2 *
     Math.PI /
     180;
+
 
   const deltaP =
     (
@@ -1780,6 +2769,7 @@ function calculateDistance(
     Math.PI /
     180;
 
+
   const deltaL =
     (
       lon2 -
@@ -1788,7 +2778,9 @@ function calculateDistance(
     Math.PI /
     180;
 
+
   const a =
+
     Math.sin(
       deltaP / 2
     ) ** 2 +
@@ -1805,16 +2797,21 @@ function calculateDistance(
       deltaL / 2
     ) ** 2;
 
+
   const c =
     2 *
     Math.atan2(
+
       Math.sqrt(
         a
       ),
+
       Math.sqrt(
         1 - a
       )
+
     );
+
 
   return Math.round(
     earthRadius *
@@ -1824,7 +2821,7 @@ function calculateDistance(
 
 
 /* =====================================
-   店家類型
+   店家類型名稱
 ===================================== */
 
 function placeTypeText(
@@ -1835,7 +2832,8 @@ function placeTypeText(
     place.amenity ||
     place.shop;
 
-  const map = {
+
+  const typeMap = {
 
     restaurant:
       "餐廳",
@@ -1875,10 +2873,12 @@ function placeTypeText(
 
     confectionery:
       "甜點店"
+
   };
 
+
   return (
-    map[type] ||
+    typeMap[type] ||
     "店家"
   );
 }
@@ -1898,26 +2898,38 @@ function renderNearbyPlaces(
         "nearbyList"
       );
 
+
   list.innerHTML =
     "";
+
 
   if (
     places.length === 0
   ) {
 
     list.innerHTML = `
+
       <div class="status-text">
+
         500 公尺內沒有找到已登錄名稱的店家。
+
         <br>
+
         你仍然可以手動輸入店名。
+
       </div>
+
     `;
 
     return;
   }
 
+
   places.forEach(
-    (place, index) => {
+    (
+      place,
+      index
+    ) => {
 
       const button =
         document
@@ -1925,14 +2937,18 @@ function renderNearbyPlaces(
             "button"
           );
 
+
       button.type =
         "button";
+
 
       button.className =
         "nearby-item";
 
+
       let meta =
         `${place.distance} 公尺 · ${placeTypeText(place)}`;
+
 
       if (
         place.cuisine
@@ -1942,15 +2958,28 @@ function renderNearbyPlaces(
           ` · ${place.cuisine}`;
       }
 
+
       button.innerHTML = `
+
         <span class="nearby-name">
-          ${escapeHTML(place.name)}
+
+          ${escapeHTML(
+            place.name
+          )}
+
         </span>
 
+
         <span class="nearby-meta">
-          ${escapeHTML(meta)}
+
+          ${escapeHTML(
+            meta
+          )}
+
         </span>
+
       `;
+
 
       button.onclick =
         () => {
@@ -1960,9 +2989,11 @@ function renderNearbyPlaces(
           );
         };
 
+
       list.appendChild(
         button
       );
+
     }
   );
 }
@@ -1977,7 +3008,10 @@ function selectNearbyPlace(
 ) {
 
   const place =
-    nearbyPlaces[index];
+    nearbyPlaces[
+      index
+    ];
+
 
   if (
     !place
@@ -1986,6 +3020,7 @@ function selectNearbyPlace(
     return;
   }
 
+
   document
     .getElementById(
       "store"
@@ -1993,14 +3028,17 @@ function selectNearbyPlace(
     .value =
       place.name;
 
+
   const selected =
     document
       .getElementById(
         "selectedShop"
       );
 
+
   selected.style.display =
     "block";
+
 
   selected.textContent =
     `✓ 已選擇：${place.name}（距離約 ${place.distance} 公尺）`;
@@ -2039,14 +3077,17 @@ function filterRecords(
     return records;
   }
 
+
   return records.filter(
     record => {
 
       const text = [
+
         record.store,
         record.food,
         record.note,
         record.address
+
       ]
         .filter(
           Boolean
@@ -2055,6 +3096,7 @@ function filterRecords(
           " "
         )
         .toLowerCase();
+
 
       return text.includes(
         searchKeyword
@@ -2084,6 +3126,7 @@ function updateSummary(
   let ratingCount =
     0;
 
+
   records.forEach(
     record => {
 
@@ -2091,6 +3134,7 @@ function updateSummary(
         Number(
           record.amount
         ) || 0;
+
 
       if (
         record.currency ===
@@ -2101,6 +3145,7 @@ function updateSummary(
           amount;
       }
 
+
       if (
         record.currency ===
         "JPY"
@@ -2109,6 +3154,7 @@ function updateSummary(
         totalJPY +=
           amount;
       }
+
 
       if (
         Number(
@@ -2121,11 +3167,11 @@ function updateSummary(
             record.rating
           );
 
-        ratingCount +=
-          1;
+        ratingCount++;
       }
     }
   );
+
 
   document
     .getElementById(
@@ -2134,6 +3180,7 @@ function updateSummary(
     .textContent =
       records.length
         .toLocaleString();
+
 
   document
     .getElementById(
@@ -2150,6 +3197,7 @@ function updateSummary(
           }
         );
 
+
   document
     .getElementById(
       "summaryJPY"
@@ -2165,25 +3213,30 @@ function updateSummary(
           }
         );
 
+
   document
     .getElementById(
       "summaryRating"
     )
     .textContent =
+
       ratingCount > 0
+
         ? (
             ratingTotal /
             ratingCount
-          ).toFixed(
+          )
+          .toFixed(
             1
           ) +
           " ⭐"
+
         : "-";
 }
 
 
 /* =====================================
-   搜尋結果文字
+   搜尋結果提示
 ===================================== */
 
 function updateSearchInfo(
@@ -2196,6 +3249,7 @@ function updateSearchInfo(
       .getElementById(
         "searchResultInfo"
       );
+
 
   if (
     searchKeyword
@@ -2213,7 +3267,7 @@ function updateSearchInfo(
 
 
 /* =====================================
-   日期標題
+   日期顯示
 ===================================== */
 
 function formatDateTitle(
@@ -2227,6 +3281,7 @@ function formatDateTitle(
     return "未知日期";
   }
 
+
   const parts =
     dateString
       .split(
@@ -2236,12 +3291,14 @@ function formatDateTitle(
         Number
       );
 
+
   if (
     parts.length !== 3
   ) {
 
     return dateString;
   }
+
 
   const year =
     parts[0];
@@ -2252,12 +3309,14 @@ function formatDateTitle(
   const day =
     parts[2];
 
+
   const date =
     new Date(
       year,
       month - 1,
       day
     );
+
 
   const weekday =
     [
@@ -2271,6 +3330,7 @@ function formatDateTitle(
     ][
       date.getDay()
     ];
+
 
   return (
     `${year}/${month}/${day}（${weekday}）`
@@ -2292,6 +3352,7 @@ function calculateDailySummary(
   let totalJPY =
     0;
 
+
   records.forEach(
     record => {
 
@@ -2299,6 +3360,7 @@ function calculateDailySummary(
         Number(
           record.amount
         ) || 0;
+
 
       if (
         record.currency ===
@@ -2309,6 +3371,7 @@ function calculateDailySummary(
           amount;
       }
 
+
       if (
         record.currency ===
         "JPY"
@@ -2317,8 +3380,10 @@ function calculateDailySummary(
         totalJPY +=
           amount;
       }
+
     }
   );
+
 
   return {
 
@@ -2328,12 +3393,13 @@ function calculateDailySummary(
     totalTWD,
 
     totalJPY
+
   };
 }
 
 
 /* =====================================
-   日期收合
+   日期收合 / 展開
 ===================================== */
 
 function toggleDateGroup(
@@ -2357,12 +3423,13 @@ function toggleDateGroup(
     );
   }
 
+
   renderRecordsV2();
 }
 
 
 /* =====================================
-   V2 紀錄重繪
+   V2 紀錄畫面
 ===================================== */
 
 function renderRecordsV2() {
@@ -2372,14 +3439,20 @@ function renderRecordsV2() {
       allRecordsCache
     );
 
+
   updateSummary(
     records
   );
 
+
   updateSearchInfo(
+
     records.length,
+
     allRecordsCache.length
+
   );
+
 
   const container =
     document
@@ -2387,30 +3460,39 @@ function renderRecordsV2() {
         "records"
       );
 
+
   container.innerHTML =
     "";
+
 
   if (
     records.length === 0
   ) {
 
     container.innerHTML = `
+
       <div class="card empty">
 
         ${
           searchKeyword
+
             ? "找不到符合搜尋條件的美食紀錄 🔍"
+
             : "還沒有美食紀錄 🍜"
         }
 
       </div>
+
     `;
+
 
     return;
   }
 
+
   const groups =
     new Map();
+
 
   records.forEach(
     record => {
@@ -2418,6 +3500,7 @@ function renderRecordsV2() {
       const date =
         record.date ||
         "未知日期";
+
 
       if (
         !groups.has(
@@ -2431,6 +3514,7 @@ function renderRecordsV2() {
         );
       }
 
+
       groups
         .get(
           date
@@ -2438,8 +3522,10 @@ function renderRecordsV2() {
         .push(
           record
         );
+
     }
   );
+
 
   const dates =
     Array
@@ -2452,6 +3538,7 @@ function renderRecordsV2() {
             a
           )
       );
+
 
   dates.forEach(
     date => {
@@ -2473,10 +3560,12 @@ function renderRecordsV2() {
               )
           );
 
+
       const daily =
         calculateDailySummary(
           dayRecords
         );
+
 
       const group =
         document
@@ -2484,8 +3573,10 @@ function renderRecordsV2() {
             "section"
           );
 
+
       group.className =
         "date-group";
+
 
       if (
         collapsedDates.has(
@@ -2493,10 +3584,13 @@ function renderRecordsV2() {
         )
       ) {
 
-        group.classList.add(
-          "collapsed"
-        );
+        group
+          .classList
+          .add(
+            "collapsed"
+          );
       }
+
 
       const header =
         document
@@ -2504,11 +3598,14 @@ function renderRecordsV2() {
             "button"
           );
 
+
       header.type =
         "button";
 
+
       header.className =
         "date-header";
+
 
       header.onclick =
         () => {
@@ -2518,8 +3615,10 @@ function renderRecordsV2() {
           );
         };
 
+
       const moneyParts =
         [];
+
 
       if (
         daily.totalTWD > 0
@@ -2534,6 +3633,7 @@ function renderRecordsV2() {
         );
       }
 
+
       if (
         daily.totalJPY > 0
       ) {
@@ -2547,12 +3647,17 @@ function renderRecordsV2() {
         );
       }
 
+
       const dailyMoney =
+
         moneyParts.length > 0
+
           ? moneyParts.join(
               "　"
             )
+
           : "尚未記錄金額";
+
 
       header.innerHTML = `
 
@@ -2569,6 +3674,7 @@ function renderRecordsV2() {
 
           </div>
 
+
           <div class="date-summary">
 
             ${daily.count}
@@ -2582,10 +3688,13 @@ function renderRecordsV2() {
 
         </div>
 
+
         <div class="date-toggle">
           ▼
         </div>
+
       `;
+
 
       const recordsWrap =
         document
@@ -2593,38 +3702,46 @@ function renderRecordsV2() {
             "div"
           );
 
+
       recordsWrap.className =
         "date-records";
+
 
       dayRecords.forEach(
         record => {
 
-          recordsWrap.appendChild(
-            createRecordCard(
-              record
-            )
-          );
+          recordsWrap
+            .appendChild(
+              createRecordCard(
+                record
+              )
+            );
+
         }
       );
+
 
       group.appendChild(
         header
       );
 
+
       group.appendChild(
         recordsWrap
       );
 
+
       container.appendChild(
         group
       );
+
     }
   );
 }
 
 
 /* =====================================
-   建立紀錄卡
+   單筆紀錄卡
 ===================================== */
 
 function createRecordCard(
@@ -2637,8 +3754,10 @@ function createRecordCard(
         "div"
       );
 
+
   card.className =
     "card";
+
 
   const moneyText =
     formatCurrency(
@@ -2646,8 +3765,11 @@ function createRecordCard(
       record.amount
     );
 
+
   const stars =
+
     record.rating
+
       ? "★".repeat(
           record.rating
         ) +
@@ -2655,10 +3777,13 @@ function createRecordCard(
           5 -
           record.rating
         )
+
       : "";
+
 
   let mapHTML =
     "";
+
 
   if (
     record.latitude != null &&
@@ -2666,7 +3791,9 @@ function createRecordCard(
   ) {
 
     mapHTML = `
+
       📍
+
       <a
         href="https://www.google.com/maps?q=${record.latitude},${record.longitude}"
         target="_blank"
@@ -2674,8 +3801,10 @@ function createRecordCard(
       >
         Google Maps
       </a>
+
     `;
   }
+
 
   card.innerHTML = `
 
@@ -2683,14 +3812,16 @@ function createRecordCard(
 
       🕒
       ${escapeHTML(
-        record.time || ""
+        record.time ||
+        ""
       )}
 
       &nbsp;
 
       🌏
       ${escapeHTML(
-        record.gmt || ""
+        record.gmt ||
+        ""
       )}
 
     </div>
@@ -2700,7 +3831,8 @@ function createRecordCard(
 
       🏪
       ${escapeHTML(
-        record.store || ""
+        record.store ||
+        ""
       )}
 
     </div>
@@ -2708,7 +3840,9 @@ function createRecordCard(
 
     ${
       record.food
+
         ? `
+
           <div class="record-food">
 
             🍽️
@@ -2717,31 +3851,41 @@ function createRecordCard(
             )}
 
           </div>
+
         `
+
         : ""
     }
 
 
     ${
       record.photo
+
         ? `
+
           <img
             class="record-photo"
             src="${record.photo}"
             alt="美食照片"
           >
+
         `
+
         : ""
     }
 
 
     ${
       stars
+
         ? `
+
           <div class="record-stars">
             ${stars}
           </div>
+
         `
+
         : ""
     }
 
@@ -2750,21 +3894,32 @@ function createRecordCard(
 
       ${
         moneyText
+
           ? `
+
             💰
             ${moneyText}
+
             <br>
+
           `
+
           : ""
       }
 
+
       ${mapHTML}
+
 
       ${
         record.gpsAccuracy
+
           ? `
+
             · GPS ±${record.gpsAccuracy}m
+
           `
+
           : ""
       }
 
@@ -2773,7 +3928,9 @@ function createRecordCard(
 
     ${
       record.address
+
         ? `
+
           <div class="record-address">
 
             🏠
@@ -2784,14 +3941,18 @@ function createRecordCard(
             )}
 
           </div>
+
         `
+
         : ""
     }
 
 
     ${
       record.note
+
         ? `
+
           <div class="record-note">
 
             ${escapeHTML(
@@ -2799,7 +3960,9 @@ function createRecordCard(
             )}
 
           </div>
+
         `
+
         : ""
     }
 
@@ -2814,6 +3977,7 @@ function createRecordCard(
         ✏️ 編輯
       </button>
 
+
       <button
         class="btn-danger"
         type="button"
@@ -2823,7 +3987,9 @@ function createRecordCard(
       </button>
 
     </div>
+
   `;
+
 
   return card;
 }
@@ -2847,13 +4013,16 @@ function formatCurrency(
     return "";
   }
 
+
   const number =
     Number(
       amount
     );
 
+
   if (
-    currency === "JPY"
+    currency ===
+    "JPY"
   ) {
 
     return (
@@ -2869,8 +4038,10 @@ function formatCurrency(
     );
   }
 
+
   if (
-    currency === "TWD"
+    currency ===
+    "TWD"
   ) {
 
     return (
@@ -2885,6 +4056,7 @@ function formatCurrency(
         )
     );
   }
+
 
   return (
     currency +
@@ -2913,8 +4085,10 @@ function getSavedAddress(
 
       display_name:
         record.address
+
     });
   }
+
 
   return (
     record.address ||
@@ -2934,18 +4108,22 @@ document
   .forEach(
     star => {
 
-      star.addEventListener(
-        "click",
-        () => {
+      star
+        .addEventListener(
+          "click",
+          () => {
 
-          rating =
-            Number(
-              star.dataset.value
-            );
+            rating =
+              Number(
+                star.dataset.value
+              );
 
-          updateStars();
-        }
-      );
+
+            updateStars();
+
+          }
+        );
+
     }
   );
 
@@ -2959,12 +4137,22 @@ function updateStars() {
     .forEach(
       star => {
 
-        star.classList.toggle(
-          "active",
+        const value =
           Number(
             star.dataset.value
-          ) <= rating
-        );
+          );
+
+
+        star
+          .classList
+          .toggle(
+
+            "active",
+
+            value <= rating
+
+          );
+
       }
     );
 }
@@ -2985,12 +4173,14 @@ document
       const file =
         event.target.files[0];
 
+
       if (
         !file
       ) {
 
         return;
       }
+
 
       try {
 
@@ -2999,38 +4189,60 @@ document
             file
           );
 
+
         const preview =
           document
             .getElementById(
               "photoPreview"
             );
 
+
         preview.src =
           currentPhoto;
+
 
         preview.style.display =
           "block";
 
+
       } catch (error) {
+
+        console.error(
+          "Photo Error:",
+          error
+        );
+
 
         alert(
           "照片處理失敗：" +
-          error.message
+          (
+            error.message ||
+            error
+          )
         );
       }
+
     }
   );
 
+
+/* =====================================
+   照片壓縮
+===================================== */
 
 function compressImage(
   file
 ) {
 
   return new Promise(
-    (resolve, reject) => {
+    (
+      resolve,
+      reject
+    ) => {
 
       const reader =
         new FileReader();
+
 
       reader.onload =
         event => {
@@ -3038,17 +4250,21 @@ function compressImage(
           const img =
             new Image();
 
+
           img.onload =
             () => {
 
               const maxSize =
                 1600;
 
+
               let width =
                 img.width;
 
+
               let height =
                 img.height;
+
 
               if (
                 width > maxSize ||
@@ -3057,15 +4273,22 @@ function compressImage(
 
                 const scale =
                   Math.min(
-                    maxSize / width,
-                    maxSize / height
+
+                    maxSize /
+                    width,
+
+                    maxSize /
+                    height
+
                   );
+
 
                 width =
                   Math.round(
                     width *
                     scale
                   );
+
 
                 height =
                   Math.round(
@@ -3074,38 +4297,70 @@ function compressImage(
                   );
               }
 
+
               const canvas =
                 document
                   .createElement(
                     "canvas"
                   );
 
+
               canvas.width =
                 width;
+
 
               canvas.height =
                 height;
 
+
               const ctx =
-                canvas.getContext(
-                  "2d"
+                canvas
+                  .getContext(
+                    "2d"
+                  );
+
+
+              if (
+                !ctx
+              ) {
+
+                reject(
+                  new Error(
+                    "瀏覽器無法建立圖片處理畫布"
+                  )
                 );
 
+                return;
+              }
+
+
               ctx.drawImage(
+
                 img,
+
                 0,
                 0,
+
                 width,
                 height
+
               );
 
+
+              const dataURL =
+                canvas
+                  .toDataURL(
+                    "image/jpeg",
+                    0.78
+                  );
+
+
               resolve(
-                canvas.toDataURL(
-                  "image/jpeg",
-                  0.78
-                )
+                dataURL
               );
+
             };
+
 
           img.onerror =
             () => {
@@ -3117,9 +4372,12 @@ function compressImage(
               );
             };
 
+
           img.src =
             event.target.result;
+
         };
+
 
       reader.onerror =
         () => {
@@ -3131,9 +4389,12 @@ function compressImage(
           );
         };
 
-      reader.readAsDataURL(
-        file
-      );
+
+      reader
+        .readAsDataURL(
+          file
+        );
+
     }
   );
 }
@@ -3179,6 +4440,7 @@ async function saveRecord() {
       "note"
     ).value.trim();
 
+
   if (
     !date ||
     !time
@@ -3191,6 +4453,7 @@ async function saveRecord() {
     return;
   }
 
+
   if (
     !storeName
   ) {
@@ -3202,8 +4465,10 @@ async function saveRecord() {
     return;
   }
 
+
   const timezoneInfo =
     getTimezoneInfo();
+
 
   const record = {
 
@@ -3258,8 +4523,13 @@ async function saveRecord() {
 
     createdAt:
       new Date()
-        .toISOString()
+        .toISOString(),
+
+    appVersion:
+      APP_VERSION
+
   };
+
 
   if (
     editingId !== null
@@ -3270,17 +4540,21 @@ async function saveRecord() {
         editingId
       );
 
+
     record.id =
       editingId;
+
 
     record.createdAt =
       oldRecord?.createdAt ||
       record.createdAt;
 
+
     record.updatedAt =
       new Date()
         .toISOString();
   }
+
 
   const transaction =
     db.transaction(
@@ -3288,10 +4562,12 @@ async function saveRecord() {
       "readwrite"
     );
 
+
   const store =
     transaction.objectStore(
       STORE_NAME
     );
+
 
   if (
     editingId !== null
@@ -3308,6 +4584,7 @@ async function saveRecord() {
     );
   }
 
+
   transaction.oncomplete =
     async () => {
 
@@ -3315,6 +4592,7 @@ async function saveRecord() {
 
       await loadRecords();
     };
+
 
   transaction.onerror =
     () => {
@@ -3333,7 +4611,10 @@ async function saveRecord() {
 function getAllRecords() {
 
   return new Promise(
-    (resolve, reject) => {
+    (
+      resolve,
+      reject
+    ) => {
 
       const transaction =
         db.transaction(
@@ -3341,13 +4622,16 @@ function getAllRecords() {
           "readonly"
         );
 
+
       const store =
         transaction.objectStore(
           STORE_NAME
         );
 
+
       const request =
         store.getAll();
+
 
       request.onsuccess =
         () => {
@@ -3357,6 +4641,7 @@ function getAllRecords() {
           );
         };
 
+
       request.onerror =
         () => {
 
@@ -3364,6 +4649,7 @@ function getAllRecords() {
             request.error
           );
         };
+
     }
   );
 }
@@ -3378,7 +4664,10 @@ function getRecord(
 ) {
 
   return new Promise(
-    (resolve, reject) => {
+    (
+      resolve,
+      reject
+    ) => {
 
       const transaction =
         db.transaction(
@@ -3386,15 +4675,18 @@ function getRecord(
           "readonly"
         );
 
+
       const store =
         transaction.objectStore(
           STORE_NAME
         );
 
+
       const request =
         store.get(
           id
         );
+
 
       request.onsuccess =
         () => {
@@ -3404,6 +4696,7 @@ function getRecord(
           );
         };
 
+
       request.onerror =
         () => {
 
@@ -3411,6 +4704,7 @@ function getRecord(
             request.error
           );
         };
+
     }
   );
 }
@@ -3425,6 +4719,7 @@ async function loadRecords() {
   const records =
     await getAllRecords();
 
+
   records.sort(
     (a, b) =>
       (
@@ -3437,8 +4732,10 @@ async function loadRecords() {
       )
   );
 
+
   allRecordsCache =
     records;
+
 
   renderRecordsV2();
 }
@@ -3457,6 +4754,7 @@ async function editRecord(
       id
     );
 
+
   if (
     !record
   ) {
@@ -3464,71 +4762,90 @@ async function editRecord(
     return;
   }
 
+
   editingId =
     id;
+
 
   document.getElementById(
     "date"
   ).value =
     record.date || "";
 
+
   document.getElementById(
     "time"
   ).value =
     record.time || "";
+
 
   document.getElementById(
     "store"
   ).value =
     record.store || "";
 
+
   document.getElementById(
     "food"
   ).value =
     record.food || "";
+
 
   document.getElementById(
     "currency"
   ).value =
     record.currency || "JPY";
 
+
   document.getElementById(
     "amount"
   ).value =
     record.amount ?? "";
+
 
   document.getElementById(
     "note"
   ).value =
     record.note || "";
 
+
   rating =
     Number(
       record.rating
     ) || 0;
 
+
   updateStars();
+
 
   latitude =
     record.latitude ??
     null;
 
+
   longitude =
     record.longitude ??
     null;
+
 
   gpsAccuracy =
     record.gpsAccuracy ??
     null;
 
+
   currentAddress =
     record.address || "";
 
+
   currentAddressDetails =
-    record.addressDetails || null;
+    record.addressDetails ||
+    null;
+
 
   currentPhoto =
-    record.photo || null;
+    record.photo ||
+    null;
+
 
   if (
     latitude != null &&
@@ -3565,6 +4882,7 @@ async function editRecord(
       >
         🗺️ 在 Google Maps 開啟
       </a>
+
     `;
 
   } else {
@@ -3575,6 +4893,7 @@ async function editRecord(
       "尚未取得位置";
   }
 
+
   if (
     currentAddress
   ) {
@@ -3583,6 +4902,7 @@ async function editRecord(
       "addressBox"
     ).style.display =
       "block";
+
 
     document.getElementById(
       "addressText"
@@ -3599,20 +4919,24 @@ async function editRecord(
       "none";
   }
 
+
   document.getElementById(
     "nearbyWrap"
   ).style.display =
     "none";
+
 
   document.getElementById(
     "selectedShop"
   ).style.display =
     "none";
 
+
   const preview =
     document.getElementById(
       "photoPreview"
     );
+
 
   if (
     currentPhoto
@@ -3620,6 +4944,7 @@ async function editRecord(
 
     preview.src =
       currentPhoto;
+
 
     preview.style.display =
       "block";
@@ -3630,28 +4955,38 @@ async function editRecord(
       "src"
     );
 
+
     preview.style.display =
       "none";
   }
+
 
   document.getElementById(
     "editIndicator"
   ).style.display =
     "block";
 
+
   document.getElementById(
     "cancelEditButton"
   ).style.display =
     "block";
+
 
   document.getElementById(
     "saveButton"
   ).textContent =
     "💾 儲存修改";
 
+
   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+
+    top:
+      0,
+
+    behavior:
+      "smooth"
+
   });
 }
 
@@ -3669,6 +5004,7 @@ function deleteRecord(
       "確定要刪除這筆美食紀錄嗎？"
     );
 
+
   if (
     !confirmed
   ) {
@@ -3676,11 +5012,13 @@ function deleteRecord(
     return;
   }
 
+
   const transaction =
     db.transaction(
       STORE_NAME,
       "readwrite"
     );
+
 
   transaction
     .objectStore(
@@ -3689,6 +5027,7 @@ function deleteRecord(
     .delete(
       id
     );
+
 
   transaction.oncomplete =
     async () => {
@@ -3717,120 +5056,149 @@ function resetForm() {
   editingId =
     null;
 
+
   setCurrentDateTime();
+
 
   document.getElementById(
     "store"
   ).value =
     "";
 
+
   document.getElementById(
     "food"
   ).value =
     "";
+
 
   document.getElementById(
     "amount"
   ).value =
     "";
 
+
   document.getElementById(
     "note"
   ).value =
     "";
+
 
   document.getElementById(
     "photoInput"
   ).value =
     "";
 
+
   latitude =
     null;
+
 
   longitude =
     null;
 
+
   gpsAccuracy =
     null;
+
 
   currentAddress =
     "";
 
+
   currentAddressDetails =
     null;
+
 
   nearbyPlaces =
     [];
 
+
   currentPhoto =
     null;
+
 
   rating =
     0;
 
+
   updateStars();
+
 
   document.getElementById(
     "locationBox"
   ).textContent =
     "尚未取得位置";
 
+
   document.getElementById(
     "addressBox"
   ).style.display =
     "none";
+
 
   document.getElementById(
     "addressText"
   ).textContent =
     "";
 
+
   document.getElementById(
     "nearbyWrap"
   ).style.display =
     "none";
+
 
   document.getElementById(
     "nearbyList"
   ).innerHTML =
     "";
 
+
   document.getElementById(
     "selectedShop"
   ).style.display =
     "none";
+
 
   document.getElementById(
     "selectedShop"
   ).textContent =
     "";
 
+
   const preview =
     document.getElementById(
       "photoPreview"
     );
 
+
   preview.removeAttribute(
     "src"
   );
 
+
   preview.style.display =
     "none";
+
 
   document.getElementById(
     "editIndicator"
   ).style.display =
     "none";
 
+
   document.getElementById(
     "cancelEditButton"
   ).style.display =
     "none";
 
+
   document.getElementById(
     "saveButton"
   ).textContent =
     "＋ 儲存美食紀錄";
+
 
   document.getElementById(
     "locationButton"
@@ -3848,6 +5216,7 @@ async function exportData() {
   const records =
     await getAllRecords();
 
+
   if (
     records.length === 0
   ) {
@@ -3859,20 +5228,29 @@ async function exportData() {
     return;
   }
 
+
   const exportObject = {
 
     app:
       "Travel Food Diary",
 
-    version:
-      2,
+    appVersion:
+      APP_VERSION,
+
+    backupVersion:
+      1,
 
     exportedAt:
       new Date()
         .toISOString(),
 
+    recordCount:
+      records.length,
+
     records
+
   };
+
 
   const blob =
     new Blob(
@@ -3889,41 +5267,190 @@ async function exportData() {
       }
     );
 
+
   const url =
     URL.createObjectURL(
       blob
     );
+
 
   const link =
     document.createElement(
       "a"
     );
 
-  const today =
-    new Date()
-      .toISOString()
-      .slice(
-        0,
-        10
-      );
+
+  const now =
+    new Date();
+
+
+  const year =
+    now.getFullYear();
+
+
+  const month =
+    String(
+      now.getMonth() + 1
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      now.getDate()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
 
   link.href =
     url;
 
+
   link.download =
-    `travel-food-${today}.json`;
+    `travel-food-v${APP_VERSION}-${year}-${month}-${day}.json`;
+
 
   document.body.appendChild(
     link
   );
 
+
   link.click();
+
 
   link.remove();
 
-  URL.revokeObjectURL(
-    url
+
+  setTimeout(
+    () => {
+
+      URL.revokeObjectURL(
+        url
+      );
+
+    },
+    1000
   );
+}
+
+
+/* =====================================
+   iPhone Safari 相容的檔案讀取
+===================================== */
+
+function readBackupFile(
+  file
+) {
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        event => {
+
+          resolve(
+            event.target.result
+          );
+        };
+
+
+      reader.onerror =
+        () => {
+
+          reject(
+            new Error(
+              "無法讀取備份檔案"
+            )
+          );
+        };
+
+
+      reader.readAsText(
+        file,
+        "UTF-8"
+      );
+
+    }
+  );
+}
+
+
+/* =====================================
+   解析備份格式
+===================================== */
+
+function getBackupRecords(
+  data
+) {
+
+  if (
+    Array.isArray(
+      data
+    )
+  ) {
+
+    return data;
+  }
+
+
+  if (
+    data &&
+    Array.isArray(
+      data.records
+    )
+  ) {
+
+    return data.records;
+  }
+
+
+  if (
+    data &&
+    Array.isArray(
+      data.foodRecords
+    )
+  ) {
+
+    return data.foodRecords;
+  }
+
+
+  if (
+    data &&
+    Array.isArray(
+      data.data
+    )
+  ) {
+
+    return data.data;
+  }
+
+
+  if (
+    data &&
+    Array.isArray(
+      data.items
+    )
+  ) {
+
+    return data.items;
+  }
+
+
+  return null;
 }
 
 
@@ -3939,8 +5466,14 @@ document
     "change",
     async event => {
 
+      const input =
+        event.target;
+
+
       const file =
-        event.target.files[0];
+        input.files &&
+        input.files[0];
+
 
       if (
         !file
@@ -3949,22 +5482,59 @@ document
         return;
       }
 
+
       try {
 
-        const text =
-          await file.text();
+        if (
+          !db
+        ) {
 
-        const data =
-          JSON.parse(
-            text
+          throw new Error(
+            "資料庫尚未完成初始化，請重新整理網頁後再試一次"
+          );
+        }
+
+
+        const text =
+          await readBackupFile(
+            file
           );
 
+
+        if (
+          !text ||
+          !text.trim()
+        ) {
+
+          throw new Error(
+            "備份檔案是空的"
+          );
+        }
+
+
+        let data;
+
+
+        try {
+
+          data =
+            JSON.parse(
+              text
+            );
+
+        } catch (error) {
+
+          throw new Error(
+            "這不是有效的 JSON 備份檔"
+          );
+        }
+
+
         const records =
-          Array.isArray(
+          getBackupRecords(
             data
-          )
-            ? data
-            : data.records;
+          );
+
 
         if (
           !Array.isArray(
@@ -3973,24 +5543,65 @@ document
         ) {
 
           throw new Error(
-            "備份格式不正確"
+            "找不到美食紀錄資料"
           );
         }
 
+
+        if (
+          records.length === 0
+        ) {
+
+          throw new Error(
+            "備份內沒有任何紀錄"
+          );
+        }
+
+
+        const backupAppVersion =
+          data &&
+          data.appVersion
+            ? data.appVersion
+            : "舊版";
+
+
         const confirmed =
           confirm(
-            `找到 ${records.length} 筆紀錄。\n\n匯入後會加入目前資料中，是否繼續？`
+
+            "備份版本：" +
+            backupAppVersion +
+
+            "\n" +
+
+            "找到 " +
+            records.length +
+            " 筆紀錄。" +
+
+            "\n\n" +
+
+            "匯入方式：加入目前資料" +
+
+            "\n" +
+
+            "不會刪除現在已有的紀錄。" +
+
+            "\n\n" +
+
+            "是否繼續？"
+
           );
+
 
         if (
           !confirmed
         ) {
 
-          event.target.value =
+          input.value =
             "";
 
           return;
         }
+
 
         const transaction =
           db.transaction(
@@ -3998,50 +5609,217 @@ document
             "readwrite"
           );
 
+
         const store =
           transaction.objectStore(
             STORE_NAME
           );
 
-        records.forEach(
-          record => {
 
-            const copy = {
-              ...record
+        let importCount =
+          0;
+
+
+        records.forEach(
+          originalRecord => {
+
+            if (
+              !originalRecord ||
+              typeof originalRecord !==
+              "object" ||
+              Array.isArray(
+                originalRecord
+              )
+            ) {
+
+              return;
+            }
+
+
+            const record = {
+              ...originalRecord
             };
 
-            delete copy.id;
+
+            /*
+              不沿用備份內的 IndexedDB ID。
+              由目前瀏覽器重新產生。
+            */
+
+            delete record.id;
+
+
+            /*
+              舊備份沒有 timestamp 時自動補上。
+            */
+
+            if (
+              !record.timestamp
+            ) {
+
+              if (
+                record.date
+              ) {
+
+                record.timestamp =
+                  record.date +
+                  "T" +
+                  (
+                    record.time ||
+                    "00:00"
+                  );
+
+              } else {
+
+                record.timestamp =
+                  new Date()
+                    .toISOString()
+                    .slice(
+                      0,
+                      16
+                    );
+              }
+            }
+
+
+            /*
+              舊備份沒有 createdAt 時自動補上。
+            */
+
+            if (
+              !record.createdAt
+            ) {
+
+              record.createdAt =
+                new Date()
+                  .toISOString();
+            }
+
+
+            /*
+              記錄最後一次經過哪個版本匯入。
+            */
+
+            record.importedByVersion =
+              APP_VERSION;
+
 
             store.add(
-              copy
+              record
             );
+
+
+            importCount++;
+
           }
         );
+
+
+        if (
+          importCount === 0
+        ) {
+
+          transaction.abort();
+
+          throw new Error(
+            "備份中沒有可匯入的有效紀錄"
+          );
+        }
+
 
         transaction.oncomplete =
           async () => {
 
-            alert(
-              "備份匯入完成"
-            );
+            input.value =
+              "";
+
 
             await loadRecords();
+
+
+            alert(
+
+              "✅ 匯入完成" +
+
+              "\n\n" +
+
+              "成功加入 " +
+              importCount +
+              " 筆紀錄"
+
+            );
           };
+
+
+        transaction.onerror =
+          () => {
+
+            console.error(
+              "Import Error:",
+              transaction.error
+            );
+
+
+            input.value =
+              "";
+
+
+            alert(
+
+              "❌ 匯入資料庫失敗" +
+
+              "\n\n" +
+
+              (
+                transaction.error
+                  ?.message ||
+                "未知錯誤"
+              )
+
+            );
+          };
+
+
+        transaction.onabort =
+          () => {
+
+            console.error(
+              "Import Aborted:",
+              transaction.error
+            );
+
+
+            input.value =
+              "";
+          };
+
 
       } catch (error) {
 
         console.error(
+          "Backup Import Error:",
           error
         );
 
+
+        input.value =
+          "";
+
+
         alert(
-          "無法匯入備份：\n" +
-          error.message
+
+          "❌ 無法匯入備份" +
+
+          "\n\n" +
+
+          (
+            error.message ||
+            error
+          )
+
         );
       }
 
-      event.target.value =
-        "";
     }
   );
 
@@ -4081,20 +5859,45 @@ function escapeHTML(
 
 
 /* =====================================
+   版號
+===================================== */
+
+function showVersion() {
+
+  const versionText =
+    document.getElementById(
+      "versionText"
+    );
+
+
+  if (
+    versionText
+  ) {
+
+    versionText.textContent =
+      "V" +
+      APP_VERSION;
+  }
+}
+
+
+/* =====================================
    初始化
 ===================================== */
 
 async function init() {
 
   /*
-    日期、時間、時區先初始化。
-    即使 IndexedDB 出問題，
-    這三項也不應受到影響。
+    日期、時間、時區、版號
+    不依賴 IndexedDB。
   */
 
   setCurrentDateTime();
 
   showTimezone();
+
+  showVersion();
+
 
   try {
 
@@ -4102,24 +5905,33 @@ async function init() {
 
     await loadRecords();
 
+
   } catch (error) {
 
     console.error(
-      "初始化失敗：",
+      "Initialization Error:",
       error
     );
 
+
     alert(
-      "資料庫初始化失敗：\n" +
+
+      "資料庫初始化失敗：" +
+
+      "\n" +
+
       (
         error.name ||
         ""
       ) +
+
       "\n" +
+
       (
         error.message ||
         error
       )
+
     );
   }
 }
