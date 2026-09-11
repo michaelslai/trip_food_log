@@ -715,6 +715,120 @@
     }
 
 
+    /* =====================================
+       V2.4 快速篩選
+    ====================================== */
+
+    .filter-section {
+
+      margin-top: 15px;
+
+      padding-top: 14px;
+
+      border-top:
+        1px solid #eee;
+    }
+
+
+    .filter-title {
+
+      margin-bottom: 8px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      color: #555;
+    }
+
+
+    .filter-chips {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+
+    .filter-chip {
+
+      padding: 8px 11px;
+
+      border:
+        1px solid #ddd;
+
+      border-radius: 999px;
+
+      background: #f7f7f7;
+
+      color: #555;
+
+      font-size: 13px;
+
+      line-height: 1;
+
+      white-space: nowrap;
+    }
+
+
+    .filter-chip.active {
+
+      border-color: #e96c43;
+
+      background: #fff0ea;
+
+      color: #c74e2a;
+
+      font-weight: 700;
+    }
+
+
+    .filter-chip.recommend.active {
+
+      border-color: #e7b800;
+
+      background: #fff5c9;
+
+      color: #8b6700;
+    }
+
+
+    .filter-status {
+
+      margin-top: 12px;
+
+      padding: 10px;
+
+      background: #faf8f3;
+
+      border-radius: 10px;
+
+      color: #666;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+
+    .filter-clear {
+
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 10px;
+
+      background: #f1f1f1;
+
+      color: #555;
+
+      font-size: 13px;
+    }
+
+
     .date-group {
 
       margin-bottom: 14px;
@@ -978,8 +1092,7 @@
 
       .header h1 {
 
-        font-size:
-          25px;
+        font-size: 25px;
       }
     }
 
@@ -1008,13 +1121,15 @@
       id="versionText"
       class="version-badge"
     >
-      V2.3.0
+      V2.4.0
     </div>
 
   </div>
 
 
-  <!-- 統計 -->
+  <!-- =====================================
+       統計
+  ====================================== -->
 
   <div class="card summary-card">
 
@@ -1022,7 +1137,9 @@
       📊 美食紀錄統計
     </div>
 
+
     <div class="summary-grid">
+
 
       <div class="summary-item">
 
@@ -1087,14 +1204,18 @@
 
       </div>
 
+
     </div>
 
   </div>
 
 
-  <!-- 搜尋 -->
+  <!-- =====================================
+       搜尋 + 快速篩選
+  ====================================== -->
 
   <div class="card search-card">
+
 
     <div class="search-wrap">
 
@@ -1112,6 +1233,7 @@
 
     </div>
 
+
     <div
       id="searchResultInfo"
       class="search-result-info"
@@ -1119,10 +1241,272 @@
       顯示全部紀錄
     </div>
 
+
+    <!-- 餐別篩選 -->
+
+    <div class="filter-section">
+
+      <div class="filter-title">
+        🕐 餐別
+      </div>
+
+
+      <div
+        id="mealFilterChips"
+        class="filter-chips"
+      >
+
+        <button
+          type="button"
+          class="filter-chip active"
+          data-filter-type="meal"
+          data-filter-value=""
+        >
+          全部
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="meal"
+          data-filter-value="早餐"
+        >
+          早餐
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="meal"
+          data-filter-value="午餐"
+        >
+          午餐
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="meal"
+          data-filter-value="下午茶"
+        >
+          下午茶
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="meal"
+          data-filter-value="晚餐"
+        >
+          晚餐
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="meal"
+          data-filter-value="宵夜"
+        >
+          宵夜
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="meal"
+          data-filter-value="其他"
+        >
+          其他
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 分類篩選 -->
+
+    <div class="filter-section">
+
+      <div class="filter-title">
+        🏷️ 分類
+      </div>
+
+
+      <div
+        id="categoryFilterChips"
+        class="filter-chips"
+      >
+
+        <button
+          type="button"
+          class="filter-chip active"
+          data-filter-type="category"
+          data-filter-value=""
+        >
+          全部
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="主食"
+        >
+          主食
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="麵飯"
+        >
+          麵飯
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="燒肉"
+        >
+          燒肉
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="火鍋"
+        >
+          火鍋
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="海鮮"
+        >
+          海鮮
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="小吃"
+        >
+          小吃
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="甜點"
+        >
+          甜點
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="飲料"
+        >
+          飲料
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="咖啡"
+        >
+          咖啡
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="酒類"
+        >
+          酒類
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="便利商店"
+        >
+          便利商店
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+          data-filter-type="category"
+          data-filter-value="其他"
+        >
+          其他
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 推薦篩選 -->
+
+    <div class="filter-section">
+
+      <div class="filter-title">
+        ⭐ 推薦
+      </div>
+
+
+      <div class="filter-chips">
+
+        <button
+          type="button"
+          id="recommendFilterButton"
+          class="filter-chip recommend"
+        >
+          只看推薦 / 值得再訪
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="filterStatus"
+      class="filter-status"
+    >
+      目前沒有啟用篩選
+    </div>
+
+
+    <button
+      type="button"
+      class="filter-clear"
+      onclick="clearAllFilters()"
+    >
+      ✕ 清除搜尋與所有篩選
+    </button>
+
+
   </div>
 
 
-  <!-- 新增 / 編輯 -->
+  <!-- =====================================
+       新增 / 編輯
+  ====================================== -->
 
   <div class="card">
 
@@ -1137,6 +1521,7 @@
 
 
     <div class="grid2">
+
 
       <div>
 
@@ -1165,6 +1550,7 @@
 
       </div>
 
+
     </div>
 
 
@@ -1175,8 +1561,6 @@
       偵測時區中...
     </div>
 
-
-    <!-- GPS -->
 
     <label>
       📍 GPS / 地址 / 附近店家
@@ -1236,8 +1620,6 @@
     </div>
 
 
-    <!-- 店家 -->
-
     <label>
       🏪 店家名稱
     </label>
@@ -1256,8 +1638,6 @@
     ></div>
 
 
-    <!-- 餐點 -->
-
     <label>
       🍽️ 吃了什麼
     </label>
@@ -1270,15 +1650,17 @@
     >
 
 
-    <!-- V2.3 餐別 / 分類 -->
+    <!-- 餐別 / 分類 -->
 
     <div class="grid2">
+
 
       <div>
 
         <label>
           🕐 餐別
         </label>
+
 
         <select id="mealType">
 
@@ -1320,6 +1702,7 @@
         <label>
           🏷️ 分類
         </label>
+
 
         <select id="foodCategory">
 
@@ -1379,6 +1762,7 @@
 
       </div>
 
+
     </div>
 
 
@@ -1397,8 +1781,6 @@
 
     </div>
 
-
-    <!-- 金額 -->
 
     <label>
       💰 金額
@@ -1432,8 +1814,6 @@
     </div>
 
 
-    <!-- 評分 -->
-
     <label>
       ⭐ 評分
     </label>
@@ -1452,8 +1832,6 @@
 
     </div>
 
-
-    <!-- 照片 -->
 
     <label>
       📷 美食照片
@@ -1478,8 +1856,6 @@
       alt="照片預覽"
     >
 
-
-    <!-- 備註 -->
 
     <label>
       📝 備註
@@ -1526,9 +1902,12 @@
   </div>
 
 
-  <!-- 備份 -->
+  <!-- =====================================
+       備份
+  ====================================== -->
 
   <div class="toolbar">
+
 
     <button
       class="btn-secondary"
@@ -1552,6 +1931,7 @@
 
     </label>
 
+
   </div>
 
 
@@ -1563,7 +1943,7 @@
 
 <script>
 
-const APP_VERSION = "2.3.0";
+const APP_VERSION = "2.4.0";
 
 const DB_NAME = "TravelFoodDiaryDB";
 const DB_VERSION = 1;
@@ -1589,6 +1969,12 @@ let editingId = null;
 let allRecordsCache = [];
 
 let searchKeyword = "";
+
+let selectedMealFilter = "";
+
+let selectedCategoryFilter = "";
+
+let recommendedOnly = false;
 
 let collapsedDates = new Set();
 
@@ -2175,7 +2561,6 @@ async function getLocationAndNearby() {
 
 /* =====================================
    GPS → 地址
-   Nominatim
 ===================================== */
 
 async function reverseGeocode(
@@ -2348,7 +2733,6 @@ function formatAddress(
 
 /* =====================================
    搜尋附近店家
-   Overpass API
 ===================================== */
 
 async function searchNearbyPlaces(
@@ -2965,50 +3349,356 @@ document
   );
 
 
+/* =====================================
+   餐別篩選按鈕
+===================================== */
+
+document
+  .querySelectorAll(
+    '[data-filter-type="meal"]'
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          selectedMealFilter =
+            button.dataset.filterValue ||
+            "";
+
+          updateFilterButtons();
+
+          renderRecordsV2();
+        }
+      );
+
+    }
+  );
+
+
+/* =====================================
+   分類篩選按鈕
+===================================== */
+
+document
+  .querySelectorAll(
+    '[data-filter-type="category"]'
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          selectedCategoryFilter =
+            button.dataset.filterValue ||
+            "";
+
+          updateFilterButtons();
+
+          renderRecordsV2();
+        }
+      );
+
+    }
+  );
+
+
+/* =====================================
+   推薦篩選
+===================================== */
+
+document
+  .getElementById(
+    "recommendFilterButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      recommendedOnly =
+        !recommendedOnly;
+
+      updateFilterButtons();
+
+      renderRecordsV2();
+    }
+  );
+
+
+/* =====================================
+   更新篩選按鈕狀態
+===================================== */
+
+function updateFilterButtons() {
+
+  document
+    .querySelectorAll(
+      '[data-filter-type="meal"]'
+    )
+    .forEach(
+      button => {
+
+        const value =
+          button.dataset.filterValue ||
+          "";
+
+        button.classList.toggle(
+          "active",
+          value ===
+          selectedMealFilter
+        );
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      '[data-filter-type="category"]'
+    )
+    .forEach(
+      button => {
+
+        const value =
+          button.dataset.filterValue ||
+          "";
+
+        button.classList.toggle(
+          "active",
+          value ===
+          selectedCategoryFilter
+        );
+      }
+    );
+
+
+  document
+    .getElementById(
+      "recommendFilterButton"
+    )
+    .classList
+    .toggle(
+      "active",
+      recommendedOnly
+    );
+
+
+  updateFilterStatus();
+}
+
+
+/* =====================================
+   篩選狀態文字
+===================================== */
+
+function updateFilterStatus() {
+
+  const status =
+    document
+      .getElementById(
+        "filterStatus"
+      );
+
+
+  const activeFilters =
+    [];
+
+
+  if (
+    searchKeyword
+  ) {
+
+    activeFilters.push(
+      `搜尋「${searchKeyword}」`
+    );
+  }
+
+
+  if (
+    selectedMealFilter
+  ) {
+
+    activeFilters.push(
+      `餐別：${selectedMealFilter}`
+    );
+  }
+
+
+  if (
+    selectedCategoryFilter
+  ) {
+
+    activeFilters.push(
+      `分類：${selectedCategoryFilter}`
+    );
+  }
+
+
+  if (
+    recommendedOnly
+  ) {
+
+    activeFilters.push(
+      "只看推薦"
+    );
+  }
+
+
+  if (
+    activeFilters.length === 0
+  ) {
+
+    status.textContent =
+      "目前沒有啟用篩選";
+
+    return;
+  }
+
+
+  status.textContent =
+    "目前篩選：" +
+    activeFilters.join(
+      " · "
+    );
+}
+
+
+/* =====================================
+   清除全部搜尋 / 篩選
+===================================== */
+
+function clearAllFilters() {
+
+  searchKeyword =
+    "";
+
+  selectedMealFilter =
+    "";
+
+  selectedCategoryFilter =
+    "";
+
+  recommendedOnly =
+    false;
+
+
+  document
+    .getElementById(
+      "searchInput"
+    )
+    .value =
+      "";
+
+
+  updateFilterButtons();
+
+  renderRecordsV2();
+}
+
+
+/* =====================================
+   套用搜尋與快速篩選
+===================================== */
+
 function filterRecords(
   records
 ) {
 
-  if (
-    !searchKeyword
-  ) {
-
-    return records;
-  }
-
-
   return records.filter(
     record => {
 
-      const recommendText =
-        record.recommended
-          ? "推薦 值得再訪"
-          : "";
+      /* -----------------------------
+         文字搜尋
+      ----------------------------- */
 
-
-      const text = [
-
-        record.store,
-        record.food,
-        record.note,
-        record.address,
-        record.mealType,
-        record.foodCategory,
-        recommendText
-
-      ]
-        .filter(
-          Boolean
-        )
-        .join(
-          " "
-        )
-        .toLowerCase();
-
-
-      return text.includes(
+      if (
         searchKeyword
-      );
+      ) {
+
+        const recommendText =
+          record.recommended
+            ? "推薦 值得再訪"
+            : "";
+
+
+        const text = [
+
+          record.store,
+          record.food,
+          record.note,
+          record.address,
+          record.mealType,
+          record.foodCategory,
+          recommendText
+
+        ]
+          .filter(
+            Boolean
+          )
+          .join(
+            " "
+          )
+          .toLowerCase();
+
+
+        if (
+          !text.includes(
+            searchKeyword
+          )
+        ) {
+
+          return false;
+        }
+      }
+
+
+      /* -----------------------------
+         餐別
+      ----------------------------- */
+
+      if (
+        selectedMealFilter &&
+        record.mealType !==
+        selectedMealFilter
+      ) {
+
+        return false;
+      }
+
+
+      /* -----------------------------
+         分類
+      ----------------------------- */
+
+      if (
+        selectedCategoryFilter &&
+        record.foodCategory !==
+        selectedCategoryFilter
+      ) {
+
+        return false;
+      }
+
+
+      /* -----------------------------
+         推薦
+      ----------------------------- */
+
+      if (
+        recommendedOnly &&
+        record.recommended !==
+        true
+      ) {
+
+        return false;
+      }
+
+
+      return true;
+
     }
   );
 }
@@ -3160,8 +3850,17 @@ function updateSearchInfo(
       );
 
 
+  const hasFilter =
+    Boolean(
+      searchKeyword ||
+      selectedMealFilter ||
+      selectedCategoryFilter ||
+      recommendedOnly
+    );
+
+
   if (
-    searchKeyword
+    hasFilter
   ) {
 
     info.textContent =
@@ -3176,7 +3875,7 @@ function updateSearchInfo(
 
 
 /* =====================================
-   日期顯示
+   日期標題
 ===================================== */
 
 function formatDateTitle(
@@ -3349,17 +4048,17 @@ function renderRecordsV2() {
     );
 
 
+  updateFilterStatus();
+
+
   updateSummary(
     records
   );
 
 
   updateSearchInfo(
-
     records.length,
-
     allRecordsCache.length
-
   );
 
 
@@ -3382,18 +4081,11 @@ function renderRecordsV2() {
 
       <div class="card empty">
 
-        ${
-          searchKeyword
-
-            ? "找不到符合搜尋條件的美食紀錄 🔍"
-
-            : "還沒有美食紀錄 🍜"
-        }
+        找不到符合目前搜尋或篩選條件的美食紀錄 🔍
 
       </div>
 
     `;
-
 
     return;
   }
@@ -3762,6 +4454,7 @@ function createRecordCard(
 
 
   const tagsHTML =
+
     tags.length > 0
 
       ? `
@@ -3885,9 +4578,7 @@ function createRecordCard(
         record.gpsAccuracy
 
           ? `
-
             · GPS ±${record.gpsAccuracy}m
-
           `
 
           : ""
@@ -4078,21 +4769,20 @@ document
   .forEach(
     star => {
 
-      star
-        .addEventListener(
-          "click",
-          () => {
+      star.addEventListener(
+        "click",
+        () => {
 
-            rating =
-              Number(
-                star.dataset.value
-              );
+          rating =
+            Number(
+              star.dataset.value
+            );
 
 
-            updateStars();
+          updateStars();
 
-          }
-        );
+        }
+      );
 
     }
   );
@@ -4113,15 +4803,10 @@ function updateStars() {
           );
 
 
-        star
-          .classList
-          .toggle(
-
-            "active",
-
-            value <= rating
-
-          );
+        star.classList.toggle(
+          "active",
+          value <= rating
+        );
 
       }
     );
@@ -5109,10 +5794,8 @@ function resetForm() {
   latitude =
     null;
 
-
   longitude =
     null;
-
 
   gpsAccuracy =
     null;
@@ -5254,7 +5937,7 @@ async function exportData() {
       APP_VERSION,
 
     backupVersion:
-      3,
+      4,
 
     exportedAt:
       new Date()
@@ -5488,13 +6171,6 @@ function normalizeText(
 
 /* =====================================
    重複判斷 Key
-
-   故意不加入 mealType / foodCategory /
-   recommended / note / rating。
-
-   原因：
-   舊紀錄補分類、改推薦、改評分之後，
-   仍然應該視為同一筆美食紀錄。
 ===================================== */
 
 function makeRecordDuplicateKey(
@@ -5661,11 +6337,6 @@ function prepareImportedRecord(
   }
 
 
-  /*
-    V2.3 新欄位。
-    舊備份沒有也沒關係。
-  */
-
   if (
     record.mealType ===
     undefined
@@ -5706,7 +6377,7 @@ function prepareImportedRecord(
 
 /* =====================================
    匯入備份
-   自動略過重複紀錄
+   自動略過重複
 ===================================== */
 
 document
@@ -6195,6 +6866,8 @@ async function init() {
   showTimezone();
 
   showVersion();
+
+  updateFilterButtons();
 
 
   try {
