@@ -670,6 +670,10 @@
     }
 
 
+    /* =====================================
+       搜尋 / 篩選
+    ====================================== */
+
     .search-card {
 
       padding: 14px;
@@ -715,18 +719,90 @@
     }
 
 
-    /* =====================================
-       V2.4 快速篩選
-    ====================================== */
+    /* V2.4.1 篩選摘要 */
+
+    .filter-status {
+
+      margin-top: 12px;
+
+      padding: 10px 12px;
+
+      background: #faf8f3;
+
+      border-radius: 10px;
+
+      color: #666;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+
+    /* V2.4.1 展開按鈕 */
+
+    .filter-toggle {
+
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 11px;
+
+      background: #f1f1f1;
+
+      color: #444;
+
+      font-size: 14px;
+
+      font-weight: 700;
+    }
+
+
+    .filter-toggle.open {
+
+      background: #fff0ea;
+
+      color: #c74e2a;
+    }
+
+
+    /* V2.4.1 可收合區 */
+
+    .filter-panel {
+
+      display: none;
+
+      margin-top: 14px;
+
+      padding-top: 2px;
+    }
+
+
+    .filter-panel.open {
+
+      display: block;
+    }
+
 
     .filter-section {
 
-      margin-top: 15px;
+      margin-top: 14px;
 
       padding-top: 14px;
 
       border-top:
         1px solid #eee;
+    }
+
+
+    .filter-section:first-child {
+
+      margin-top: 0;
+
+      padding-top: 0;
+
+      border-top: 0;
     }
 
 
@@ -795,25 +871,9 @@
     }
 
 
-    .filter-status {
-
-      margin-top: 12px;
-
-      padding: 10px;
-
-      background: #faf8f3;
-
-      border-radius: 10px;
-
-      color: #666;
-
-      font-size: 12px;
-
-      line-height: 1.5;
-    }
-
-
     .filter-clear {
+
+      display: none;
 
       width: 100%;
 
@@ -828,6 +888,16 @@
       font-size: 13px;
     }
 
+
+    .filter-clear.show {
+
+      display: block;
+    }
+
+
+    /* =====================================
+       日期群組 / 紀錄
+    ====================================== */
 
     .date-group {
 
@@ -1121,7 +1191,7 @@
       id="versionText"
       class="version-badge"
     >
-      V2.4.0
+      V2.4.1
     </div>
 
   </div>
@@ -1211,7 +1281,7 @@
 
 
   <!-- =====================================
-       搜尋 + 快速篩選
+       搜尋 + 可收合篩選
   ====================================== -->
 
   <div class="card search-card">
@@ -1242,248 +1312,6 @@
     </div>
 
 
-    <!-- 餐別篩選 -->
-
-    <div class="filter-section">
-
-      <div class="filter-title">
-        🕐 餐別
-      </div>
-
-
-      <div
-        id="mealFilterChips"
-        class="filter-chips"
-      >
-
-        <button
-          type="button"
-          class="filter-chip active"
-          data-filter-type="meal"
-          data-filter-value=""
-        >
-          全部
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="meal"
-          data-filter-value="早餐"
-        >
-          早餐
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="meal"
-          data-filter-value="午餐"
-        >
-          午餐
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="meal"
-          data-filter-value="下午茶"
-        >
-          下午茶
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="meal"
-          data-filter-value="晚餐"
-        >
-          晚餐
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="meal"
-          data-filter-value="宵夜"
-        >
-          宵夜
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="meal"
-          data-filter-value="其他"
-        >
-          其他
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- 分類篩選 -->
-
-    <div class="filter-section">
-
-      <div class="filter-title">
-        🏷️ 分類
-      </div>
-
-
-      <div
-        id="categoryFilterChips"
-        class="filter-chips"
-      >
-
-        <button
-          type="button"
-          class="filter-chip active"
-          data-filter-type="category"
-          data-filter-value=""
-        >
-          全部
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="主食"
-        >
-          主食
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="麵飯"
-        >
-          麵飯
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="燒肉"
-        >
-          燒肉
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="火鍋"
-        >
-          火鍋
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="海鮮"
-        >
-          海鮮
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="小吃"
-        >
-          小吃
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="甜點"
-        >
-          甜點
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="飲料"
-        >
-          飲料
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="咖啡"
-        >
-          咖啡
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="酒類"
-        >
-          酒類
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="便利商店"
-        >
-          便利商店
-        </button>
-
-        <button
-          type="button"
-          class="filter-chip"
-          data-filter-type="category"
-          data-filter-value="其他"
-        >
-          其他
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- 推薦篩選 -->
-
-    <div class="filter-section">
-
-      <div class="filter-title">
-        ⭐ 推薦
-      </div>
-
-
-      <div class="filter-chips">
-
-        <button
-          type="button"
-          id="recommendFilterButton"
-          class="filter-chip recommend"
-        >
-          只看推薦 / 值得再訪
-        </button>
-
-      </div>
-
-    </div>
-
-
     <div
       id="filterStatus"
       class="filter-status"
@@ -1494,6 +1322,272 @@
 
     <button
       type="button"
+      id="filterToggleButton"
+      class="filter-toggle"
+      onclick="toggleFilterPanel()"
+    >
+      ☰ 展開篩選
+    </button>
+
+
+    <!-- =====================================
+         V2.4.1 收合區
+    ====================================== -->
+
+    <div
+      id="filterPanel"
+      class="filter-panel"
+    >
+
+
+      <!-- 餐別 -->
+
+      <div class="filter-section">
+
+        <div class="filter-title">
+          🕐 餐別
+        </div>
+
+
+        <div
+          id="mealFilterChips"
+          class="filter-chips"
+        >
+
+          <button
+            type="button"
+            class="filter-chip active"
+            data-filter-type="meal"
+            data-filter-value=""
+          >
+            全部
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="meal"
+            data-filter-value="早餐"
+          >
+            早餐
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="meal"
+            data-filter-value="午餐"
+          >
+            午餐
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="meal"
+            data-filter-value="下午茶"
+          >
+            下午茶
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="meal"
+            data-filter-value="晚餐"
+          >
+            晚餐
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="meal"
+            data-filter-value="宵夜"
+          >
+            宵夜
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="meal"
+            data-filter-value="其他"
+          >
+            其他
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- 分類 -->
+
+      <div class="filter-section">
+
+        <div class="filter-title">
+          🏷️ 分類
+        </div>
+
+
+        <div
+          id="categoryFilterChips"
+          class="filter-chips"
+        >
+
+          <button
+            type="button"
+            class="filter-chip active"
+            data-filter-type="category"
+            data-filter-value=""
+          >
+            全部
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="主食"
+          >
+            主食
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="麵飯"
+          >
+            麵飯
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="燒肉"
+          >
+            燒肉
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="火鍋"
+          >
+            火鍋
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="海鮮"
+          >
+            海鮮
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="小吃"
+          >
+            小吃
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="甜點"
+          >
+            甜點
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="飲料"
+          >
+            飲料
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="咖啡"
+          >
+            咖啡
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="酒類"
+          >
+            酒類
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="便利商店"
+          >
+            便利商店
+          </button>
+
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter-type="category"
+            data-filter-value="其他"
+          >
+            其他
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- 推薦 -->
+
+      <div class="filter-section">
+
+        <div class="filter-title">
+          ⭐ 推薦
+        </div>
+
+
+        <div class="filter-chips">
+
+          <button
+            type="button"
+            id="recommendFilterButton"
+            class="filter-chip recommend"
+          >
+            只看推薦 / 值得再訪
+          </button>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <button
+      type="button"
+      id="clearFilterButton"
       class="filter-clear"
       onclick="clearAllFilters()"
     >
@@ -1650,8 +1744,6 @@
     >
 
 
-    <!-- 餐別 / 分類 -->
-
     <div class="grid2">
 
 
@@ -1765,8 +1857,6 @@
 
     </div>
 
-
-    <!-- 推薦 -->
 
     <div class="recommend-row">
 
@@ -1943,7 +2033,7 @@
 
 <script>
 
-const APP_VERSION = "2.4.0";
+const APP_VERSION = "2.4.1";
 
 const DB_NAME = "TravelFoodDiaryDB";
 const DB_VERSION = 1;
@@ -1975,6 +2065,9 @@ let selectedMealFilter = "";
 let selectedCategoryFilter = "";
 
 let recommendedOnly = false;
+
+/* V2.4.1 篩選區預設收合 */
+let filterPanelOpen = false;
 
 let collapsedDates = new Set();
 
@@ -3344,13 +3437,72 @@ document
           .trim()
           .toLowerCase();
 
+      updateFilterButtons();
+
       renderRecordsV2();
     }
   );
 
 
 /* =====================================
-   餐別篩選按鈕
+   V2.4.1 展開 / 收合篩選區
+===================================== */
+
+function toggleFilterPanel() {
+
+  filterPanelOpen =
+    !filterPanelOpen;
+
+  updateFilterPanel();
+}
+
+
+function updateFilterPanel() {
+
+  const panel =
+    document.getElementById(
+      "filterPanel"
+    );
+
+  const button =
+    document.getElementById(
+      "filterToggleButton"
+    );
+
+
+  if (
+    filterPanelOpen
+  ) {
+
+    panel.classList.add(
+      "open"
+    );
+
+    button.classList.add(
+      "open"
+    );
+
+    button.textContent =
+      "▲ 收合篩選";
+
+  } else {
+
+    panel.classList.remove(
+      "open"
+    );
+
+    button.classList.remove(
+      "open"
+    );
+
+    button.textContent =
+      "☰ 展開篩選";
+  }
+}
+
+
+/* =====================================
+   餐別篩選
 ===================================== */
 
 document
@@ -3379,7 +3531,7 @@ document
 
 
 /* =====================================
-   分類篩選按鈕
+   分類篩選
 ===================================== */
 
 document
@@ -3430,7 +3582,7 @@ document
 
 
 /* =====================================
-   更新篩選按鈕狀態
+   更新篩選 UI
 ===================================== */
 
 function updateFilterButtons() {
@@ -3451,6 +3603,7 @@ function updateFilterButtons() {
           value ===
           selectedMealFilter
         );
+
       }
     );
 
@@ -3471,6 +3624,7 @@ function updateFilterButtons() {
           value ===
           selectedCategoryFilter
         );
+
       }
     );
 
@@ -3487,20 +3641,21 @@ function updateFilterButtons() {
 
 
   updateFilterStatus();
+
+  updateClearFilterButton();
 }
 
 
 /* =====================================
-   篩選狀態文字
+   篩選摘要
 ===================================== */
 
 function updateFilterStatus() {
 
   const status =
-    document
-      .getElementById(
-        "filterStatus"
-      );
+    document.getElementById(
+      "filterStatus"
+    );
 
 
   const activeFilters =
@@ -3567,7 +3722,35 @@ function updateFilterStatus() {
 
 
 /* =====================================
-   清除全部搜尋 / 篩選
+   是否顯示清除篩選
+===================================== */
+
+function updateClearFilterButton() {
+
+  const button =
+    document.getElementById(
+      "clearFilterButton"
+    );
+
+
+  const hasFilter =
+    Boolean(
+      searchKeyword ||
+      selectedMealFilter ||
+      selectedCategoryFilter ||
+      recommendedOnly
+    );
+
+
+  button.classList.toggle(
+    "show",
+    hasFilter
+  );
+}
+
+
+/* =====================================
+   清除全部篩選
 ===================================== */
 
 function clearAllFilters() {
@@ -3585,12 +3768,10 @@ function clearAllFilters() {
     false;
 
 
-  document
-    .getElementById(
-      "searchInput"
-    )
-    .value =
-      "";
+  document.getElementById(
+    "searchInput"
+  ).value =
+    "";
 
 
   updateFilterButtons();
@@ -3600,7 +3781,7 @@ function clearAllFilters() {
 
 
 /* =====================================
-   套用搜尋與快速篩選
+   套用搜尋與篩選
 ===================================== */
 
 function filterRecords(
@@ -3609,10 +3790,6 @@ function filterRecords(
 
   return records.filter(
     record => {
-
-      /* -----------------------------
-         文字搜尋
-      ----------------------------- */
 
       if (
         searchKeyword
@@ -3655,10 +3832,6 @@ function filterRecords(
       }
 
 
-      /* -----------------------------
-         餐別
-      ----------------------------- */
-
       if (
         selectedMealFilter &&
         record.mealType !==
@@ -3669,10 +3842,6 @@ function filterRecords(
       }
 
 
-      /* -----------------------------
-         分類
-      ----------------------------- */
-
       if (
         selectedCategoryFilter &&
         record.foodCategory !==
@@ -3682,10 +3851,6 @@ function filterRecords(
         return false;
       }
 
-
-      /* -----------------------------
-         推薦
-      ----------------------------- */
 
       if (
         recommendedOnly &&
@@ -3772,65 +3937,53 @@ function updateSummary(
   );
 
 
-  document
-    .getElementById(
-      "summaryCount"
-    )
-    .textContent =
-      records.length
-        .toLocaleString();
+  document.getElementById(
+    "summaryCount"
+  ).textContent =
+    records.length.toLocaleString();
 
 
-  document
-    .getElementById(
-      "summaryTWD"
-    )
-    .textContent =
-      "NT$" +
-      totalTWD
-        .toLocaleString(
-          "zh-TW",
-          {
-            maximumFractionDigits:
-              0
-          }
-        );
+  document.getElementById(
+    "summaryTWD"
+  ).textContent =
+    "NT$" +
+    totalTWD.toLocaleString(
+      "zh-TW",
+      {
+        maximumFractionDigits:
+          0
+      }
+    );
 
 
-  document
-    .getElementById(
-      "summaryJPY"
-    )
-    .textContent =
-      "¥" +
-      totalJPY
-        .toLocaleString(
-          "ja-JP",
-          {
-            maximumFractionDigits:
-              0
-          }
-        );
+  document.getElementById(
+    "summaryJPY"
+  ).textContent =
+    "¥" +
+    totalJPY.toLocaleString(
+      "ja-JP",
+      {
+        maximumFractionDigits:
+          0
+      }
+    );
 
 
-  document
-    .getElementById(
-      "summaryRating"
-    )
-    .textContent =
+  document.getElementById(
+    "summaryRating"
+  ).textContent =
 
-      ratingCount > 0
+    ratingCount > 0
 
-        ? (
-            ratingTotal /
-            ratingCount
-          )
-          .toFixed(
-            1
-          ) +
-          " ⭐"
+      ? (
+          ratingTotal /
+          ratingCount
+        ).toFixed(
+          1
+        ) +
+        " ⭐"
 
-        : "-";
+      : "-";
 }
 
 
@@ -3844,10 +3997,9 @@ function updateSearchInfo(
 ) {
 
   const info =
-    document
-      .getElementById(
-        "searchResultInfo"
-      );
+    document.getElementById(
+      "searchResultInfo"
+    );
 
 
   const hasFilter =
@@ -4007,7 +4159,7 @@ function calculateDailySummary(
 
 
 /* =====================================
-   日期收合 / 展開
+   日期收合
 ===================================== */
 
 function toggleDateGroup(
@@ -4050,6 +4202,7 @@ function renderRecordsV2() {
 
   updateFilterStatus();
 
+  updateClearFilterButton();
 
   updateSummary(
     records
@@ -4063,10 +4216,9 @@ function renderRecordsV2() {
 
 
   const container =
-    document
-      .getElementById(
-        "records"
-      );
+    document.getElementById(
+      "records"
+    );
 
 
   container.innerHTML =
@@ -4169,10 +4321,9 @@ function renderRecordsV2() {
 
 
       const group =
-        document
-          .createElement(
-            "section"
-          );
+        document.createElement(
+          "section"
+        );
 
 
       group.className =
@@ -4185,19 +4336,16 @@ function renderRecordsV2() {
         )
       ) {
 
-        group
-          .classList
-          .add(
-            "collapsed"
-          );
+        group.classList.add(
+          "collapsed"
+        );
       }
 
 
       const header =
-        document
-          .createElement(
-            "button"
-          );
+        document.createElement(
+          "button"
+        );
 
 
       header.type =
@@ -4227,10 +4375,9 @@ function renderRecordsV2() {
 
         moneyParts.push(
           "NT$" +
-          daily.totalTWD
-            .toLocaleString(
-              "zh-TW"
-            )
+          daily.totalTWD.toLocaleString(
+            "zh-TW"
+          )
         );
       }
 
@@ -4241,10 +4388,9 @@ function renderRecordsV2() {
 
         moneyParts.push(
           "¥" +
-          daily.totalJPY
-            .toLocaleString(
-              "ja-JP"
-            )
+          daily.totalJPY.toLocaleString(
+            "ja-JP"
+          )
         );
       }
 
@@ -4298,10 +4444,9 @@ function renderRecordsV2() {
 
 
       const recordsWrap =
-        document
-          .createElement(
-            "div"
-          );
+        document.createElement(
+          "div"
+        );
 
 
       recordsWrap.className =
@@ -4311,12 +4456,11 @@ function renderRecordsV2() {
       dayRecords.forEach(
         record => {
 
-          recordsWrap
-            .appendChild(
-              createRecordCard(
-                record
-              )
-            );
+          recordsWrap.appendChild(
+            createRecordCard(
+              record
+            )
+          );
 
         }
       );
@@ -4350,10 +4494,9 @@ function createRecordCard(
 ) {
 
   const card =
-    document
-      .createElement(
-        "div"
-      );
+    document.createElement(
+      "div"
+    );
 
 
   card.className =
@@ -4688,14 +4831,13 @@ function formatCurrency(
 
     return (
       "¥" +
-      number
-        .toLocaleString(
-          "ja-JP",
-          {
-            maximumFractionDigits:
-              0
-          }
-        )
+      number.toLocaleString(
+        "ja-JP",
+        {
+          maximumFractionDigits:
+            0
+        }
+      )
     );
   }
 
@@ -4707,14 +4849,13 @@ function formatCurrency(
 
     return (
       "NT$" +
-      number
-        .toLocaleString(
-          "zh-TW",
-          {
-            maximumFractionDigits:
-              0
-          }
-        )
+      number.toLocaleString(
+        "zh-TW",
+        {
+          maximumFractionDigits:
+            0
+        }
+      )
     );
   }
 
@@ -4728,7 +4869,7 @@ function formatCurrency(
 
 
 /* =====================================
-   儲存地址顯示
+   地址顯示
 ===================================== */
 
 function getSavedAddress(
@@ -4846,10 +4987,9 @@ document
 
 
         const preview =
-          document
-            .getElementById(
-              "photoPreview"
-            );
+          document.getElementById(
+            "photoPreview"
+          );
 
 
         preview.src =
@@ -4916,7 +5056,6 @@ function compressImage(
               let width =
                 img.width;
 
-
               let height =
                 img.height;
 
@@ -4954,10 +5093,9 @@ function compressImage(
 
 
               const canvas =
-                document
-                  .createElement(
-                    "canvas"
-                  );
+                document.createElement(
+                  "canvas"
+                );
 
 
               canvas.width =
@@ -4969,10 +5107,9 @@ function compressImage(
 
 
               const ctx =
-                canvas
-                  .getContext(
-                    "2d"
-                  );
+                canvas.getContext(
+                  "2d"
+                );
 
 
               if (
@@ -5003,11 +5140,10 @@ function compressImage(
 
 
               resolve(
-                canvas
-                  .toDataURL(
-                    "image/jpeg",
-                    0.78
-                  )
+                canvas.toDataURL(
+                  "image/jpeg",
+                  0.78
+                )
               );
 
             };
@@ -5041,10 +5177,9 @@ function compressImage(
         };
 
 
-      reader
-        .readAsDataURL(
-          file
-        );
+      reader.readAsDataURL(
+        file
+      );
 
     }
   );
@@ -5794,8 +5929,10 @@ function resetForm() {
   latitude =
     null;
 
+
   longitude =
     null;
+
 
   gpsAccuracy =
     null;
@@ -6040,7 +6177,7 @@ async function exportData() {
 
 
 /* =====================================
-   iPhone Safari 相容檔案讀取
+   備份檔讀取
 ===================================== */
 
 function readBackupFile(
@@ -6270,7 +6407,7 @@ function makeRecordDuplicateKey(
 
 
 /* =====================================
-   清理匯入紀錄
+   整理匯入紀錄
 ===================================== */
 
 function prepareImportedRecord(
@@ -6866,6 +7003,18 @@ async function init() {
   showTimezone();
 
   showVersion();
+
+
+  /*
+    V2.4.1
+    篩選區預設收合
+  */
+
+  filterPanelOpen =
+    false;
+
+
+  updateFilterPanel();
 
   updateFilterButtons();
 
