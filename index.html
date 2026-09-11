@@ -39,7 +39,7 @@
 
     .header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .header h1 {
@@ -293,6 +293,139 @@
       font-weight: 400;
     }
 
+    /* =====================================
+       V2 統計卡
+    ===================================== */
+
+    .summary-card {
+      padding: 16px;
+    }
+
+    .summary-title {
+      margin-bottom: 12px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .summary-item {
+      background: #faf8f3;
+      border-radius: 14px;
+      padding: 13px;
+    }
+
+    .summary-label {
+      color: #777;
+      font-size: 12px;
+    }
+
+    .summary-value {
+      margin-top: 5px;
+      font-size: 21px;
+      font-weight: 750;
+    }
+
+    .summary-rating {
+      color: #f2a900;
+    }
+
+    /* =====================================
+       V2 搜尋
+    ===================================== */
+
+    .search-card {
+      padding: 14px;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-input {
+      padding-left: 42px;
+      background: #fff;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      pointer-events: none;
+    }
+
+    .search-result-info {
+      margin-top: 8px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    /* =====================================
+       V2 日期群組
+    ===================================== */
+
+    .date-group {
+      margin-bottom: 14px;
+    }
+
+    .date-header {
+      width: 100%;
+      padding: 14px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    .date-header-left {
+      min-width: 0;
+    }
+
+    .date-title {
+      font-size: 17px;
+      font-weight: 750;
+    }
+
+    .date-summary {
+      margin-top: 4px;
+      color: #777;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .date-toggle {
+      flex: 0 0 auto;
+      color: #777;
+      font-size: 18px;
+      transition: transform 0.2s ease;
+    }
+
+    .date-group.collapsed .date-toggle {
+      transform: rotate(-90deg);
+    }
+
+    .date-records {
+      margin-top: 10px;
+    }
+
+    .date-group.collapsed .date-records {
+      display: none;
+    }
+
+    /* =====================================
+       紀錄卡
+    ===================================== */
+
     .record-date {
       color: #777777;
       font-size: 13px;
@@ -382,6 +515,7 @@
     }
 
     @media (max-width: 450px) {
+
       .grid2 {
         grid-template-columns: 1fr;
       }
@@ -390,13 +524,18 @@
         grid-template-columns: 115px 1fr;
       }
 
+      .summary-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
       .header h1 {
         font-size: 25px;
       }
     }
   </style>
 </head>
-  <body>
+
+<body>
 
 <div class="container">
 
@@ -405,27 +544,157 @@
     <p>記錄旅途中吃過的每一道美食</p>
   </div>
 
+
+  <!-- =====================================
+       V2 統計卡
+  ====================================== -->
+
+  <div class="card summary-card">
+
+    <div class="summary-title">
+      📊 美食紀錄統計
+    </div>
+
+    <div class="summary-grid">
+
+      <div class="summary-item">
+        <div class="summary-label">
+          紀錄數
+        </div>
+
+        <div
+          id="summaryCount"
+          class="summary-value"
+        >
+          0
+        </div>
+      </div>
+
+
+      <div class="summary-item">
+        <div class="summary-label">
+          平均評分
+        </div>
+
+        <div
+          id="summaryRating"
+          class="summary-value summary-rating"
+        >
+          -
+        </div>
+      </div>
+
+
+      <div class="summary-item">
+        <div class="summary-label">
+          台幣總額
+        </div>
+
+        <div
+          id="summaryTWD"
+          class="summary-value"
+        >
+          NT$0
+        </div>
+      </div>
+
+
+      <div class="summary-item">
+        <div class="summary-label">
+          日幣總額
+        </div>
+
+        <div
+          id="summaryJPY"
+          class="summary-value"
+        >
+          ¥0
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================
+       V2 搜尋
+  ====================================== -->
+
+  <div class="card search-card">
+
+    <div class="search-wrap">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+      <input
+        type="search"
+        id="searchInput"
+        class="search-input"
+        placeholder="搜尋店家、餐點、備註"
+        autocomplete="off"
+      >
+
+    </div>
+
+    <div
+      id="searchResultInfo"
+      class="search-result-info"
+    >
+      顯示全部紀錄
+    </div>
+
+  </div>
+
+
+  <!-- =====================================
+       新增 / 編輯
+  ====================================== -->
+
   <div class="card">
 
-    <h2>新增美食紀錄</h2>
+    <h2>
+      新增美食紀錄
+    </h2>
 
     <div id="editIndicator">
       ✏️ 目前正在編輯既有紀錄
     </div>
 
+
     <div class="grid2">
 
       <div>
-        <label>📅 日期</label>
-        <input type="date" id="date">
+
+        <label>
+          📅 日期
+        </label>
+
+        <input
+          type="date"
+          id="date"
+        >
+
       </div>
 
+
       <div>
-        <label>🕒 時間</label>
-        <input type="time" id="time">
+
+        <label>
+          🕒 時間
+        </label>
+
+        <input
+          type="time"
+          id="time"
+        >
+
       </div>
 
     </div>
+
 
     <div
       id="timezoneText"
@@ -434,7 +703,14 @@
       偵測時區中...
     </div>
 
-    <label>📍 GPS / 地址 / 附近店家</label>
+
+    <!-- =====================================
+         GPS
+    ====================================== -->
+
+    <label>
+      📍 GPS / 地址 / 附近店家
+    </label>
 
     <button
       id="locationButton"
@@ -445,6 +721,7 @@
       📍 取得目前位置＋搜尋附近店家
     </button>
 
+
     <div
       id="locationBox"
       class="location-box"
@@ -452,21 +729,30 @@
       尚未取得位置
     </div>
 
+
+    <!-- 地址 -->
+
     <div
       id="addressBox"
       class="address-box"
     >
+
       <div class="address-title">
         🏠 自動辨識地址
       </div>
 
       <div id="addressText"></div>
+
     </div>
+
+
+    <!-- 附近店家 -->
 
     <div
       id="nearbyWrap"
       class="nearby-wrap"
     >
+
       <div class="nearby-title">
         🏪 附近店家
       </div>
@@ -479,9 +765,17 @@
         id="nearbyList"
         class="nearby-list"
       ></div>
+
     </div>
 
-    <label>🏪 店家名稱</label>
+
+    <!-- =====================================
+         店家
+    ====================================== -->
+
+    <label>
+      🏪 店家名稱
+    </label>
 
     <input
       type="text"
@@ -489,12 +783,20 @@
       placeholder="例如：一蘭拉麵 天神店"
     >
 
+
     <div
       id="selectedShop"
       class="selected-shop"
     ></div>
 
-    <label>🍽️ 吃了什麼</label>
+
+    <!-- =====================================
+         餐點
+    ====================================== -->
+
+    <label>
+      🍽️ 吃了什麼
+    </label>
 
     <input
       type="text"
@@ -502,11 +804,19 @@
       placeholder="例如：天然豚骨拉麵、半熟蛋"
     >
 
-    <label>💰 金額</label>
+
+    <!-- =====================================
+         金額
+    ====================================== -->
+
+    <label>
+      💰 金額
+    </label>
 
     <div class="money-row">
 
       <select id="currency">
+
         <option value="JPY">
           ¥ 日幣
         </option>
@@ -514,7 +824,9 @@
         <option value="TWD">
           NT$ 台幣
         </option>
+
       </select>
+
 
       <input
         type="number"
@@ -527,20 +839,55 @@
 
     </div>
 
-    <label>⭐ 評分</label>
+
+    <!-- =====================================
+         評分
+    ====================================== -->
+
+    <label>
+      ⭐ 評分
+    </label>
 
     <div
       id="starGroup"
       class="star-group"
     >
-      <span class="star" data-value="1">★</span>
-      <span class="star" data-value="2">★</span>
-      <span class="star" data-value="3">★</span>
-      <span class="star" data-value="4">★</span>
-      <span class="star" data-value="5">★</span>
+
+      <span
+        class="star"
+        data-value="1"
+      >★</span>
+
+      <span
+        class="star"
+        data-value="2"
+      >★</span>
+
+      <span
+        class="star"
+        data-value="3"
+      >★</span>
+
+      <span
+        class="star"
+        data-value="4"
+      >★</span>
+
+      <span
+        class="star"
+        data-value="5"
+      >★</span>
+
     </div>
 
-    <label>📷 美食照片</label>
+
+    <!-- =====================================
+         照片
+    ====================================== -->
+
+    <label>
+      📷 美食照片
+    </label>
 
     <input
       type="file"
@@ -548,9 +895,11 @@
       accept="image/*"
     >
 
+
     <div class="small">
       iPhone 可直接拍照或從照片圖庫選取
     </div>
+
 
     <img
       id="photoPreview"
@@ -558,12 +907,24 @@
       alt="照片預覽"
     >
 
-    <label>📝 備註</label>
+
+    <!-- =====================================
+         備註
+    ====================================== -->
+
+    <label>
+      📝 備註
+    </label>
 
     <textarea
       id="note"
       placeholder="例如：排隊約 20 分鐘、湯頭偏濃，下次還會再來"
     ></textarea>
+
+
+    <!-- =====================================
+         儲存
+    ====================================== -->
 
     <button
       id="saveButton"
@@ -573,6 +934,7 @@
     >
       ＋ 儲存美食紀錄
     </button>
+
 
     <button
       id="cancelEditButton"
@@ -588,12 +950,18 @@
       取消編輯
     </button>
 
+
     <div class="source-note">
       地址與附近店家資料來源為 OpenStreetMap、Nominatim、Overpass。
       不同地區的店家資料完整度可能不同。
     </div>
 
   </div>
+
+
+  <!-- =====================================
+       備份
+  ====================================== -->
 
   <div class="toolbar">
 
@@ -604,6 +972,7 @@
     >
       📤 匯出備份
     </button>
+
 
     <label class="import-label">
 
@@ -620,12 +989,18 @@
 
   </div>
 
+
+  <!-- =====================================
+       V2 日期分組紀錄
+  ====================================== -->
+
   <div id="records"></div>
 
 </div>
 
 <script>
-  const DB_NAME = "TravelFoodDiaryDB";
+
+const DB_NAME = "TravelFoodDiaryDB";
 const DB_VERSION = 1;
 const STORE_NAME = "foodRecords";
 
@@ -641,13 +1016,21 @@ let currentAddressDetails = null;
 let nearbyPlaces = [];
 
 let currentPhoto = null;
+
 let rating = 0;
+
 let editingId = null;
 
+let allRecordsCache = [];
 
-/* =========================
-   DATABASE
-========================= */
+let searchKeyword = "";
+
+let collapsedDates = new Set();
+
+
+/* =====================================
+   IndexedDB
+===================================== */
 
 function openDB() {
 
@@ -678,22 +1061,19 @@ function openDB() {
           event.target.result;
 
         if (
-          !database
-            .objectStoreNames
-            .contains(
-              STORE_NAME
-            )
+          !database.objectStoreNames.contains(
+            STORE_NAME
+          )
         ) {
 
           const store =
-            database
-              .createObjectStore(
-                STORE_NAME,
-                {
-                  keyPath: "id",
-                  autoIncrement: true
-                }
-              );
+            database.createObjectStore(
+              STORE_NAME,
+              {
+                keyPath: "id",
+                autoIncrement: true
+              }
+            );
 
           store.createIndex(
             "timestamp",
@@ -708,9 +1088,9 @@ function openDB() {
 }
 
 
-/* =========================
+/* =====================================
    日期 / 時間
-========================= */
+===================================== */
 
 function setCurrentDateTime() {
 
@@ -768,9 +1148,9 @@ function setCurrentDateTime() {
 }
 
 
-/* =========================
+/* =====================================
    時區
-========================= */
+===================================== */
 
 function getTimezoneInfo() {
 
@@ -840,9 +1220,9 @@ function showTimezone() {
 }
 
 
-/* =========================
+/* =====================================
    GPS
-========================= */
+===================================== */
 
 function getGPSPosition() {
 
@@ -850,8 +1230,7 @@ function getGPSPosition() {
     (resolve, reject) => {
 
       if (
-        !navigator
-          .geolocation
+        !navigator.geolocation
       ) {
 
         reject(
@@ -883,47 +1262,41 @@ function getGPSPosition() {
 }
 
 
-/* =========================
+/* =====================================
    GPS + 地址 + 附近店家
-========================= */
+===================================== */
 
 async function getLocationAndNearby() {
 
   const button =
-    document
-      .getElementById(
-        "locationButton"
-      );
+    document.getElementById(
+      "locationButton"
+    );
 
   const locationBox =
-    document
-      .getElementById(
-        "locationBox"
-      );
+    document.getElementById(
+      "locationBox"
+    );
 
   const addressBox =
-    document
-      .getElementById(
-        "addressBox"
-      );
+    document.getElementById(
+      "addressBox"
+    );
 
   const addressText =
-    document
-      .getElementById(
-        "addressText"
-      );
+    document.getElementById(
+      "addressText"
+    );
 
   const nearbyWrap =
-    document
-      .getElementById(
-        "nearbyWrap"
-      );
+    document.getElementById(
+      "nearbyWrap"
+    );
 
   const nearbyList =
-    document
-      .getElementById(
-        "nearbyList"
-      );
+    document.getElementById(
+      "nearbyList"
+    );
 
   button.disabled =
     true;
@@ -992,20 +1365,19 @@ async function getLocationAndNearby() {
     `;
 
     const results =
-      await Promise
-        .allSettled([
+      await Promise.allSettled([
 
-          reverseGeocode(
-            latitude,
-            longitude
-          ),
+        reverseGeocode(
+          latitude,
+          longitude
+        ),
 
-          searchNearbyPlaces(
-            latitude,
-            longitude
-          )
+        searchNearbyPlaces(
+          latitude,
+          longitude
+        )
 
-        ]);
+      ]);
 
     if (
       results[0].status ===
@@ -1113,10 +1485,10 @@ async function getLocationAndNearby() {
 }
 
 
-/* =========================
+/* =====================================
    GPS → 地址
    Nominatim
-========================= */
+===================================== */
 
 async function reverseGeocode(
   lat,
@@ -1185,9 +1557,9 @@ async function reverseGeocode(
 }
 
 
-/* =========================
+/* =====================================
    地址格式
-========================= */
+===================================== */
 
 function formatAddress(
   geo
@@ -1206,31 +1578,31 @@ function formatAddress(
   const parts =
     [];
 
-  const candidates =
-    [
-      a.country,
+  const candidates = [
 
-      a.state ||
-      a.province ||
-      a.region,
+    a.country,
 
-      a.city ||
-      a.town ||
-      a.village ||
-      a.municipality ||
-      a.county,
+    a.state ||
+    a.province ||
+    a.region,
 
-      a.city_district ||
-      a.district ||
-      a.suburb ||
-      a.neighbourhood,
+    a.city ||
+    a.town ||
+    a.village ||
+    a.municipality ||
+    a.county,
 
-      a.road ||
-      a.pedestrian ||
-      a.footway,
+    a.city_district ||
+    a.district ||
+    a.suburb ||
+    a.neighbourhood,
 
-      a.house_number
-    ];
+    a.road ||
+    a.pedestrian ||
+    a.footway,
+
+    a.house_number
+  ];
 
   candidates.forEach(
     item => {
@@ -1265,10 +1637,10 @@ function formatAddress(
 }
 
 
-/* =========================
+/* =====================================
    搜尋附近店家
    Overpass
-========================= */
+===================================== */
 
 async function searchNearbyPlaces(
   lat,
@@ -1299,16 +1671,17 @@ out center tags;
     null;
 
   for (
-    const server of
-    servers
+    const server of servers
   ) {
+
+    let timer = null;
 
     try {
 
       const controller =
         new AbortController();
 
-      const timer =
+      timer =
         setTimeout(
           () => {
             controller.abort();
@@ -1364,6 +1737,15 @@ out center tags;
 
     } catch (error) {
 
+      if (
+        timer
+      ) {
+
+        clearTimeout(
+          timer
+        );
+      }
+
       lastError =
         error;
     }
@@ -1378,9 +1760,9 @@ out center tags;
 }
 
 
-/* =========================
+/* =====================================
    整理附近店家
-========================= */
+===================================== */
 
 function parseNearbyPlaces(
   data,
@@ -1464,12 +1846,7 @@ function parseNearbyPlaces(
         tags.shop || "",
 
       cuisine:
-        tags.cuisine || "",
-
-      address:
-        buildPlaceAddress(
-          tags
-        )
+        tags.cuisine || ""
     });
   }
 
@@ -1477,8 +1854,7 @@ function parseNearbyPlaces(
     new Map();
 
   for (
-    const place of
-    places
+    const place of places
   ) {
 
     const key =
@@ -1491,11 +1867,9 @@ function parseNearbyPlaces(
         key
       ) ||
       place.distance <
-      uniqueMap
-        .get(
-          key
-        )
-        .distance
+      uniqueMap.get(
+        key
+      ).distance
     ) {
 
       uniqueMap.set(
@@ -1521,34 +1895,9 @@ function parseNearbyPlaces(
 }
 
 
-/* =========================
-   店家地址
-========================= */
-
-function buildPlaceAddress(
-  tags
-) {
-
-  const parts = [
-    tags["addr:city"],
-    tags["addr:district"],
-    tags["addr:suburb"],
-    tags["addr:street"],
-    tags["addr:housenumber"]
-  ]
-    .filter(
-      Boolean
-    );
-
-  return parts.join(
-    " "
-  );
-}
-
-
-/* =========================
+/* =====================================
    距離計算
-========================= */
+===================================== */
 
 function calculateDistance(
   lat1,
@@ -1606,7 +1955,9 @@ function calculateDistance(
   const c =
     2 *
     Math.atan2(
-      Math.sqrt(a),
+      Math.sqrt(
+        a
+      ),
       Math.sqrt(
         1 - a
       )
@@ -1619,9 +1970,9 @@ function calculateDistance(
 }
 
 
-/* =========================
+/* =====================================
    店家類型
-========================= */
+===================================== */
 
 function placeTypeText(
   place
@@ -1680,19 +2031,18 @@ function placeTypeText(
 }
 
 
-/* =========================
+/* =====================================
    顯示附近店家
-========================= */
+===================================== */
 
 function renderNearbyPlaces(
   places
 ) {
 
   const list =
-    document
-      .getElementById(
-        "nearbyList"
-      );
+    document.getElementById(
+      "nearbyList"
+    );
 
   list.innerHTML =
     "";
@@ -1716,10 +2066,9 @@ function renderNearbyPlaces(
     (place, index) => {
 
       const button =
-        document
-          .createElement(
-            "button"
-          );
+        document.createElement(
+          "button"
+        );
 
       button.type =
         "button";
@@ -1764,9 +2113,9 @@ function renderNearbyPlaces(
 }
 
 
-/* =========================
+/* =====================================
    選擇附近店家
-========================= */
+===================================== */
 
 function selectNearbyPlace(
   index
@@ -1790,10 +2139,9 @@ function selectNearbyPlace(
       place.name;
 
   const selected =
-    document
-      .getElementById(
-        "selectedShop"
-      );
+    document.getElementById(
+      "selectedShop"
+    );
 
   selected.style.display =
     "block";
@@ -1801,51 +2149,2729 @@ function selectNearbyPlace(
   selected.textContent =
     `✓ 已選擇：${place.name}（距離約 ${place.distance} 公尺）`;
 }
-  /* =========================
-   星星評分
-========================= */
+
+
+/* =====================================
+   V2 搜尋
+===================================== */
 
 document
-  .querySelectorAll(".star")
-  .forEach(star => {
+  .getElementById(
+    "searchInput"
+  )
+  .addEventListener(
+    "input",
+    event => {
 
-    star.addEventListener(
-      "click",
-      () => {
+      searchKeyword =
+        event.target.value
+          .trim()
+          .toLowerCase();
 
-        rating =
+      renderRecordsV2();
+    }
+  );
+
+
+function filterRecords(
+  records
+) {
+
+  if (
+    !searchKeyword
+  ) {
+
+    return records;
+  }
+
+  return records.filter(
+    record => {
+
+      const text = [
+        record.store,
+        record.food,
+        record.note,
+        record.address
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return text.includes(
+        searchKeyword
+      );
+    }
+  );
+}
+
+
+/* =====================================
+   V2 統計
+===================================== */
+
+function updateSummary(
+  records
+) {
+
+  const count =
+    records.length;
+
+  let totalTWD =
+    0;
+
+  let totalJPY =
+    0;
+
+  let ratingTotal =
+    0;
+
+  let ratingCount =
+    0;
+
+  records.forEach(
+    record => {
+
+      const amount =
+        Number(
+          record.amount
+        ) || 0;
+
+      if (
+        record.currency ===
+        "TWD"
+      ) {
+
+        totalTWD +=
+          amount;
+      }
+
+      if (
+        record.currency ===
+        "JPY"
+      ) {
+
+        totalJPY +=
+          amount;
+      }
+
+      if (
+        Number(
+          record.rating
+        ) > 0
+      ) {
+
+        ratingTotal +=
           Number(
-            star.dataset.value
+            record.rating
           );
 
-        updateStars();
+        ratingCount +=
+          1;
       }
+    }
+  );
+
+  document
+    .getElementById(
+      "summaryCount"
+    )
+    .textContent =
+      count.toLocaleString();
+
+  document
+    .getElementById(
+      "summaryTWD"
+    )
+    .textContent =
+      "NT$" +
+      totalTWD.toLocaleString(
+        "zh-TW",
+        {
+          maximumFractionDigits:
+            0
+        }
+      );
+
+  document
+    .getElementById(
+      "summaryJPY"
+    )
+    .textContent =
+      "¥" +
+      totalJPY.toLocaleString(
+        "ja-JP",
+        {
+          maximumFractionDigits:
+            0
+        }
+      );
+
+  if (
+    ratingCount > 0
+  ) {
+
+    const average =
+      ratingTotal /
+      ratingCount;
+
+    document
+      .getElementById(
+        "summaryRating"
+      )
+      .textContent =
+        average.toFixed(
+          1
+        ) +
+        " ⭐";
+
+  } else {
+
+    document
+      .getElementById(
+        "summaryRating"
+      )
+      .textContent =
+        "-";
+  }
+}
+
+
+/* =====================================
+   V2 搜尋結果提示
+===================================== */
+
+function updateSearchInfo(
+  filteredCount,
+  totalCount
+) {
+
+  const info =
+    document.getElementById(
+      "searchResultInfo"
     );
+
+  if (
+    !searchKeyword
+  ) {
+
+    info.textContent =
+      `顯示全部 ${totalCount} 筆紀錄`;
+
+    return;
+  }
+
+  info.textContent =
+    `找到 ${filteredCount} / ${totalCount} 筆紀錄`;
+}
+
+
+/* =====================================
+   日期顯示格式
+===================================== */
+
+function formatDateTitle(
+  dateString
+) {
+
+  if (
+    !dateString
+  ) {
+
+    return "未知日期";
+  }
+
+  const parts =
+    dateString.split(
+      "-"
+    );
+
+  if (
+    parts.length !== 3
+  ) {
+
+    return dateString;
+  }
+
+  const year =
+    Number(
+      parts[0]
+    );
+
+  const month =
+    Number(
+      parts[1]
+    );
+
+  const day =
+    Number(
+      parts[2]
+    );
+
+  const date =
+    new Date(
+      year,
+      month - 1,
+      day
+    );
+
+  const weekdayMap = [
+    "日",
+    "一",
+    "二",
+    "三",
+    "四",
+    "五",
+    "六"
+  ];
+
+  const weekday =
+    weekdayMap[
+      date.getDay()
+    ];
+
+  return (
+    `${year}/${month}/${day}（${weekday}）`
+  );
+}
+
+
+/* =====================================
+   每日統計
+===================================== */
+
+function calculateDailySummary(
+  records
+) {
+
+  let totalTWD =
+    0;
+
+  let totalJPY =
+    0;
+
+  records.forEach(
+    record => {
+
+      const amount =
+        Number(
+          record.amount
+        ) || 0;
+
+      if (
+        record.currency ===
+        "TWD"
+      ) {
+
+        totalTWD +=
+          amount;
+      }
+
+      if (
+        record.currency ===
+        "JPY"
+      ) {
+
+        totalJPY +=
+          amount;
+      }
+    }
+  );
+
+  return {
+    count:
+      records.length,
+
+    totalTWD,
+
+    totalJPY
+  };
+}
+
+
+/* =====================================
+   日期群組收合
+===================================== */
+
+function toggleDateGroup(
+  date
+) {
+
+  if (
+    collapsedDates.has(
+      date
+    )
+  ) {
+
+    collapsedDates.delete(
+      date
+    );
+
+  } else {
+
+    collapsedDates.add(
+      date
+    );
+  }
+
+  renderRecordsV2();
+}
+
+
+/* =====================================
+   V2 主畫面重繪
+===================================== */
+
+function renderRecordsV2() {
+
+  const filteredRecords =
+    filterRecords(
+      allRecordsCache
+    );
+
+  updateSummary(
+    filteredRecords
+  );
+
+  updateSearchInfo(
+    filteredRecords.length,
+    allRecordsCache.length
+  );
+
+  const container =
+    document.getElementById(
+      "records"
+    );
+
+  container.innerHTML =
+    "";
+
+  if (
+    filteredRecords.length === 0
+  ) {
+
+    container.innerHTML = `
+      <div class="card empty">
+        ${
+          searchKeyword
+            ? "找不到符合搜尋條件的美食紀錄 🔍"
+            : "還沒有美食紀錄 🍜"
+        }
+      </div>
+    `;
+
+    return;
+  }
+
+  const groups =
+    new Map();
+
+  filteredRecords.forEach(
+    record => {
+
+      const date =
+        record.date ||
+        "未知日期";
+
+      if (
+        !groups.has(
+          date
+        )
+      ) {
+
+        groups.set(
+          date,
+          []
+        );
+      }
+
+      groups
+        .get(
+          date
+        )
+        .push(
+          record
+        );
+    }
+  );
+
+  const sortedDates =
+    Array.from(
+      groups.keys()
+    )
+      .sort(
+        (a, b) =>
+          b.localeCompare(
+            a
+          )
+      );
+
+  sortedDates.forEach(
+    date => {
+
+      const records =
+        groups.get(
+          date
+        );
+
+      records.sort(
+        (a, b) =>
+          (
+            b.timestamp ||
+            ""
+          ).localeCompare(
+            a.timestamp ||
+            ""
+          )
+      );
+
+      const daily =
+        calculateDailySummary(
+          records
+        );
+
+      const group =
+        document.createElement(
+          "section"
+        );
+
+      group.className =
+        "date-group";
+
+      if (
+        collapsedDates.has(
+          date
+        )
+      ) {
+
+        group.classList.add(
+          "collapsed"
+        );
+      }
+
+      const header =
+        document.createElement(
+          "button"
+        );
+
+      header.type =
+        "button";
+
+      header.className =
+        "date-header";
+
+      header.onclick =
+        () => {
+
+          toggleDateGroup(
+            date
+          );
+        };
+
+      let dailyMoney =
+        "";
+
+      if (
+        daily.totalTWD > 0
+      ) {
+
+        dailyMoney +=
+          `NT$${daily.totalTWD.toLocaleString("zh-TW")}`;
+      }
+
+      if (
+        daily.totalJPY > 0
+      ) {
+
+        if (
+          dailyMoney
+        ) {
+
+          dailyMoney +=
+            "　";
+        }
+
+        dailyMoney +=
+          `¥${daily.totalJPY.toLocaleString("ja-JP")}`;
+      }
+
+      if (
+        !dailyMoney
+      ) {
+
+        dailyMoney =
+          "尚未記錄金額";
+      }
+
+      header.innerHTML = `
+        <div class="date-header-left">
+
+          <div class="date-title">
+            📅 ${escapeHTML(
+              formatDateTitle(
+                date
+              )
+            )}
+          </div>
+
+          <div class="date-summary">
+            ${daily.count} 筆紀錄
+            ·
+            ${escapeHTML(
+              dailyMoney
+            )}
+          </div>
+
+        </div>
+
+        <div class="date-toggle">
+          ▼
+        </div>
+      `;
+
+      const recordsWrap =
+        document.createElement(
+          "div"
+        );
+
+      recordsWrap.className =
+        "date-records";
+
+      records.forEach(
+        record => {
+
+          recordsWrap.appendChild(
+            createRecordCard(
+              record
+            )
+          );
+        }
+      );
+
+      group.appendChild(
+        header
+      );
+
+      group.appendChild(
+        recordsWrap
+      );
+
+      container.appendChild(
+        group
+      );
+    }
+  );
+}
+
+const DB_NAME = "TravelFoodDiaryDB";
+const DB_VERSION = 1;
+const STORE_NAME = "foodRecords";
+
+let db = null;
+
+let latitude = null;
+let longitude = null;
+let gpsAccuracy = null;
+
+let currentAddress = "";
+let currentAddressDetails = null;
+
+let nearbyPlaces = [];
+
+let currentPhoto = null;
+
+let rating = 0;
+
+let editingId = null;
+
+let allRecordsCache = [];
+
+let searchKeyword = "";
+
+let collapsedDates = new Set();
+
+
+/* =====================================
+   IndexedDB
+===================================== */
+
+function openDB() {
+
+  return new Promise((resolve, reject) => {
+
+    const request =
+      indexedDB.open(
+        DB_NAME,
+        DB_VERSION
+      );
+
+    request.onerror = () => {
+      reject(request.error);
+    };
+
+    request.onsuccess = () => {
+
+      db =
+        request.result;
+
+      resolve(db);
+    };
+
+    request.onupgradeneeded =
+      event => {
+
+        const database =
+          event.target.result;
+
+        if (
+          !database.objectStoreNames.contains(
+            STORE_NAME
+          )
+        ) {
+
+          const store =
+            database.createObjectStore(
+              STORE_NAME,
+              {
+                keyPath: "id",
+                autoIncrement: true
+              }
+            );
+
+          store.createIndex(
+            "timestamp",
+            "timestamp",
+            {
+              unique: false
+            }
+          );
+        }
+      };
   });
+}
+
+
+/* =====================================
+   日期 / 時間
+===================================== */
+
+function setCurrentDateTime() {
+
+  const now =
+    new Date();
+
+  const year =
+    now.getFullYear();
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
+
+  const hour =
+    String(
+      now.getHours()
+    ).padStart(
+      2,
+      "0"
+    );
+
+  const minute =
+    String(
+      now.getMinutes()
+    ).padStart(
+      2,
+      "0"
+    );
+
+  document
+    .getElementById(
+      "date"
+    )
+    .value =
+      `${year}-${month}-${day}`;
+
+  document
+    .getElementById(
+      "time"
+    )
+    .value =
+      `${hour}:${minute}`;
+}
+
+
+/* =====================================
+   時區
+===================================== */
+
+function getTimezoneInfo() {
+
+  const timezone =
+    Intl
+      .DateTimeFormat()
+      .resolvedOptions()
+      .timeZone;
+
+  const offsetMinutes =
+    -new Date()
+      .getTimezoneOffset();
+
+  const sign =
+    offsetMinutes >= 0
+      ? "+"
+      : "-";
+
+  const hours =
+    Math.floor(
+      Math.abs(
+        offsetMinutes
+      ) / 60
+    );
+
+  const minutes =
+    Math.abs(
+      offsetMinutes
+    ) % 60;
+
+  let gmt =
+    `GMT${sign}${hours}`;
+
+  if (
+    minutes !== 0
+  ) {
+
+    gmt +=
+      ":" +
+      String(
+        minutes
+      ).padStart(
+        2,
+        "0"
+      );
+  }
+
+  return {
+    timezone,
+    gmt,
+    offsetMinutes
+  };
+}
+
+
+function showTimezone() {
+
+  const info =
+    getTimezoneInfo();
+
+  document
+    .getElementById(
+      "timezoneText"
+    )
+    .textContent =
+      `🌏 ${info.timezone} · ${info.gmt}`;
+}
+
+
+/* =====================================
+   GPS
+===================================== */
+
+function getGPSPosition() {
+
+  return new Promise(
+    (resolve, reject) => {
+
+      if (
+        !navigator.geolocation
+      ) {
+
+        reject(
+          new Error(
+            "此瀏覽器不支援 GPS 定位"
+          )
+        );
+
+        return;
+      }
+
+      navigator
+        .geolocation
+        .getCurrentPosition(
+
+          resolve,
+
+          reject,
+
+          {
+            enableHighAccuracy: true,
+            timeout: 20000,
+            maximumAge: 0
+          }
+
+        );
+    }
+  );
+}
+
+
+/* =====================================
+   GPS + 地址 + 附近店家
+===================================== */
+
+async function getLocationAndNearby() {
+
+  const button =
+    document.getElementById(
+      "locationButton"
+    );
+
+  const locationBox =
+    document.getElementById(
+      "locationBox"
+    );
+
+  const addressBox =
+    document.getElementById(
+      "addressBox"
+    );
+
+  const addressText =
+    document.getElementById(
+      "addressText"
+    );
+
+  const nearbyWrap =
+    document.getElementById(
+      "nearbyWrap"
+    );
+
+  const nearbyList =
+    document.getElementById(
+      "nearbyList"
+    );
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    "📡 正在取得 GPS...";
+
+  locationBox.textContent =
+    "正在取得目前位置...";
+
+  addressBox.style.display =
+    "none";
+
+  nearbyWrap.style.display =
+    "none";
+
+  try {
+
+    const position =
+      await getGPSPosition();
+
+    latitude =
+      position.coords.latitude;
+
+    longitude =
+      position.coords.longitude;
+
+    gpsAccuracy =
+      Math.round(
+        position.coords.accuracy
+      );
+
+    locationBox.innerHTML = `
+      緯度：${latitude.toFixed(6)}
+      <br>
+      經度：${longitude.toFixed(6)}
+      <br>
+      GPS 精度：約 ${gpsAccuracy} 公尺
+      <br><br>
+
+      <a
+        href="https://www.google.com/maps?q=${latitude},${longitude}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        🗺️ 在 Google Maps 開啟
+      </a>
+    `;
+
+    button.textContent =
+      "🔎 正在搜尋地址與附近店家...";
+
+    addressBox.style.display =
+      "block";
+
+    addressText.textContent =
+      "正在辨識地址...";
+
+    nearbyWrap.style.display =
+      "block";
+
+    nearbyList.innerHTML = `
+      <div class="status-text">
+        正在搜尋附近店家...
+      </div>
+    `;
+
+    const results =
+      await Promise.allSettled([
+
+        reverseGeocode(
+          latitude,
+          longitude
+        ),
+
+        searchNearbyPlaces(
+          latitude,
+          longitude
+        )
+
+      ]);
+
+    if (
+      results[0].status ===
+      "fulfilled"
+    ) {
+
+      const geo =
+        results[0].value;
+
+      currentAddress =
+        geo.display_name || "";
+
+      currentAddressDetails =
+        geo.address || null;
+
+      addressText.textContent =
+        formatAddress(
+          geo
+        );
+
+    } else {
+
+      currentAddress =
+        "";
+
+      currentAddressDetails =
+        null;
+
+      addressText.textContent =
+        "目前無法自動辨識地址，但 GPS 已經記錄。";
+    }
+
+    if (
+      results[1].status ===
+      "fulfilled"
+    ) {
+
+      nearbyPlaces =
+        results[1].value;
+
+      renderNearbyPlaces(
+        nearbyPlaces
+      );
+
+    } else {
+
+      nearbyPlaces =
+        [];
+
+      nearbyList.innerHTML = `
+        <div class="status-text">
+          目前無法取得附近店家，
+          你仍然可以手動輸入店名。
+        </div>
+      `;
+    }
+
+  } catch (error) {
+
+    console.error(
+      error
+    );
+
+    let message =
+      "無法取得 GPS 位置";
+
+    if (
+      error.code === 1
+    ) {
+
+      message =
+        "定位權限被拒絕，請允許 Safari 使用你的位置。";
+
+    } else if (
+      error.code === 2
+    ) {
+
+      message =
+        "目前無法取得 GPS 位置，請移到訊號較好的地方再試一次。";
+
+    } else if (
+      error.code === 3
+    ) {
+
+      message =
+        "GPS 定位逾時，請再試一次。";
+
+    } else if (
+      error.message
+    ) {
+
+      message =
+        error.message;
+    }
+
+    locationBox.textContent =
+      message;
+  }
+
+  button.disabled =
+    false;
+
+  button.textContent =
+    "📍 重新定位＋搜尋附近店家";
+}
+
+
+/* =====================================
+   GPS → 地址
+   Nominatim
+===================================== */
+
+async function reverseGeocode(
+  lat,
+  lon
+) {
+
+  const controller =
+    new AbortController();
+
+  const timer =
+    setTimeout(
+      () => {
+        controller.abort();
+      },
+      12000
+    );
+
+  const url =
+    "https://nominatim.openstreetmap.org/reverse" +
+    "?format=jsonv2" +
+    "&lat=" +
+    encodeURIComponent(
+      lat
+    ) +
+    "&lon=" +
+    encodeURIComponent(
+      lon
+    ) +
+    "&zoom=18" +
+    "&addressdetails=1" +
+    "&accept-language=zh-TW,zh-Hant,zh,en,ja";
+
+  try {
+
+    const response =
+      await fetch(
+        url,
+        {
+          headers: {
+            "Accept":
+              "application/json"
+          },
+
+          signal:
+            controller.signal
+        }
+      );
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "地址查詢服務目前無法使用"
+      );
+    }
+
+    return await response.json();
+
+  } finally {
+
+    clearTimeout(
+      timer
+    );
+  }
+}
+
+
+/* =====================================
+   地址格式
+===================================== */
+
+function formatAddress(
+  geo
+) {
+
+  if (
+    !geo
+  ) {
+
+    return "";
+  }
+
+  const a =
+    geo.address || {};
+
+  const parts =
+    [];
+
+  const candidates = [
+
+    a.country,
+
+    a.state ||
+    a.province ||
+    a.region,
+
+    a.city ||
+    a.town ||
+    a.village ||
+    a.municipality ||
+    a.county,
+
+    a.city_district ||
+    a.district ||
+    a.suburb ||
+    a.neighbourhood,
+
+    a.road ||
+    a.pedestrian ||
+    a.footway,
+
+    a.house_number
+  ];
+
+  candidates.forEach(
+    item => {
+
+      if (
+        item &&
+        !parts.includes(
+          item
+        )
+      ) {
+
+        parts.push(
+          item
+        );
+      }
+    }
+  );
+
+  if (
+    parts.length > 0
+  ) {
+
+    return parts.join(
+      " "
+    );
+  }
+
+  return (
+    geo.display_name ||
+    ""
+  );
+}
+
+
+/* =====================================
+   搜尋附近店家
+   Overpass
+===================================== */
+
+async function searchNearbyPlaces(
+  lat,
+  lon
+) {
+
+  const radius =
+    500;
+
+  const query = `
+[out:json][timeout:18];
+
+(
+  nwr["amenity"~"restaurant|cafe|fast_food|food_court|ice_cream|bar|pub"](around:${radius},${lat},${lon});
+
+  nwr["shop"~"bakery|convenience|deli|pastry|coffee|confectionery"](around:${radius},${lat},${lon});
+);
+
+out center tags;
+  `;
+
+  const servers = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter"
+  ];
+
+  let lastError =
+    null;
+
+  for (
+    const server of servers
+  ) {
+
+    let timer = null;
+
+    try {
+
+      const controller =
+        new AbortController();
+
+      timer =
+        setTimeout(
+          () => {
+            controller.abort();
+          },
+          18000
+        );
+
+      const response =
+        await fetch(
+          server,
+          {
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+
+            body:
+              "data=" +
+              encodeURIComponent(
+                query
+              ),
+
+            signal:
+              controller.signal
+          }
+        );
+
+      clearTimeout(
+        timer
+      );
+
+      if (
+        !response.ok
+      ) {
+
+        throw new Error(
+          "附近店家服務 HTTP " +
+          response.status
+        );
+      }
+
+      const data =
+        await response.json();
+
+      return parseNearbyPlaces(
+        data,
+        lat,
+        lon
+      );
+
+    } catch (error) {
+
+      if (
+        timer
+      ) {
+
+        clearTimeout(
+          timer
+        );
+      }
+
+      lastError =
+        error;
+    }
+  }
+
+  throw (
+    lastError ||
+    new Error(
+      "附近店家服務目前無法使用"
+    )
+  );
+}
+
+
+/* =====================================
+   整理附近店家
+===================================== */
+
+function parseNearbyPlaces(
+  data,
+  userLat,
+  userLon
+) {
+
+  const places =
+    [];
+
+  for (
+    const element of
+    data.elements || []
+  ) {
+
+    const tags =
+      element.tags || {};
+
+    const name =
+      tags["name:zh-Hant"] ||
+      tags["name:zh"] ||
+      tags["name:ja"] ||
+      tags.name ||
+      tags.brand;
+
+    if (
+      !name
+    ) {
+
+      continue;
+    }
+
+    let placeLat =
+      element.lat;
+
+    let placeLon =
+      element.lon;
+
+    if (
+      element.center
+    ) {
+
+      placeLat =
+        element.center.lat;
+
+      placeLon =
+        element.center.lon;
+    }
+
+    if (
+      placeLat == null ||
+      placeLon == null
+    ) {
+
+      continue;
+    }
+
+    const distance =
+      calculateDistance(
+        userLat,
+        userLon,
+        placeLat,
+        placeLon
+      );
+
+    places.push({
+      name,
+
+      lat:
+        placeLat,
+
+      lon:
+        placeLon,
+
+      distance,
+
+      amenity:
+        tags.amenity || "",
+
+      shop:
+        tags.shop || "",
+
+      cuisine:
+        tags.cuisine || ""
+    });
+  }
+
+  const uniqueMap =
+    new Map();
+
+  for (
+    const place of places
+  ) {
+
+    const key =
+      place.name
+        .trim()
+        .toLowerCase();
+
+    if (
+      !uniqueMap.has(
+        key
+      ) ||
+      place.distance <
+      uniqueMap.get(
+        key
+      ).distance
+    ) {
+
+      uniqueMap.set(
+        key,
+        place
+      );
+    }
+  }
+
+  return Array
+    .from(
+      uniqueMap.values()
+    )
+    .sort(
+      (a, b) =>
+        a.distance -
+        b.distance
+    )
+    .slice(
+      0,
+      20
+    );
+}
+
+
+/* =====================================
+   距離計算
+===================================== */
+
+function calculateDistance(
+  lat1,
+  lon1,
+  lat2,
+  lon2
+) {
+
+  const earthRadius =
+    6371000;
+
+  const p1 =
+    lat1 *
+    Math.PI /
+    180;
+
+  const p2 =
+    lat2 *
+    Math.PI /
+    180;
+
+  const deltaP =
+    (
+      lat2 -
+      lat1
+    ) *
+    Math.PI /
+    180;
+
+  const deltaL =
+    (
+      lon2 -
+      lon1
+    ) *
+    Math.PI /
+    180;
+
+  const a =
+    Math.sin(
+      deltaP / 2
+    ) ** 2 +
+
+    Math.cos(
+      p1
+    ) *
+
+    Math.cos(
+      p2
+    ) *
+
+    Math.sin(
+      deltaL / 2
+    ) ** 2;
+
+  const c =
+    2 *
+    Math.atan2(
+      Math.sqrt(
+        a
+      ),
+      Math.sqrt(
+        1 - a
+      )
+    );
+
+  return Math.round(
+    earthRadius *
+    c
+  );
+}
+
+
+/* =====================================
+   店家類型
+===================================== */
+
+function placeTypeText(
+  place
+) {
+
+  const type =
+    place.amenity ||
+    place.shop;
+
+  const map = {
+
+    restaurant:
+      "餐廳",
+
+    cafe:
+      "咖啡店",
+
+    fast_food:
+      "速食",
+
+    food_court:
+      "美食廣場",
+
+    ice_cream:
+      "冰品",
+
+    bar:
+      "酒吧",
+
+    pub:
+      "居酒屋 / 酒吧",
+
+    bakery:
+      "麵包店",
+
+    convenience:
+      "便利商店",
+
+    deli:
+      "熟食店",
+
+    pastry:
+      "甜點店",
+
+    coffee:
+      "咖啡店",
+
+    confectionery:
+      "甜點店"
+  };
+
+  return (
+    map[type] ||
+    "店家"
+  );
+}
+
+
+/* =====================================
+   顯示附近店家
+===================================== */
+
+function renderNearbyPlaces(
+  places
+) {
+
+  const list =
+    document.getElementById(
+      "nearbyList"
+    );
+
+  list.innerHTML =
+    "";
+
+  if (
+    places.length === 0
+  ) {
+
+    list.innerHTML = `
+      <div class="status-text">
+        500 公尺內沒有找到已登錄名稱的店家。
+        <br>
+        你仍然可以手動輸入店名。
+      </div>
+    `;
+
+    return;
+  }
+
+  places.forEach(
+    (place, index) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.type =
+        "button";
+
+      button.className =
+        "nearby-item";
+
+      let meta =
+        `${place.distance} 公尺 · ${placeTypeText(place)}`;
+
+      if (
+        place.cuisine
+      ) {
+
+        meta +=
+          ` · ${place.cuisine}`;
+      }
+
+      button.innerHTML = `
+        <span class="nearby-name">
+          ${escapeHTML(place.name)}
+        </span>
+
+        <span class="nearby-meta">
+          ${escapeHTML(meta)}
+        </span>
+      `;
+
+      button.onclick =
+        () => {
+
+          selectNearbyPlace(
+            index
+          );
+        };
+
+      list.appendChild(
+        button
+      );
+    }
+  );
+}
+
+
+/* =====================================
+   選擇附近店家
+===================================== */
+
+function selectNearbyPlace(
+  index
+) {
+
+  const place =
+    nearbyPlaces[index];
+
+  if (
+    !place
+  ) {
+
+    return;
+  }
+
+  document
+    .getElementById(
+      "store"
+    )
+    .value =
+      place.name;
+
+  const selected =
+    document.getElementById(
+      "selectedShop"
+    );
+
+  selected.style.display =
+    "block";
+
+  selected.textContent =
+    `✓ 已選擇：${place.name}（距離約 ${place.distance} 公尺）`;
+}
+
+
+/* =====================================
+   V2 搜尋
+===================================== */
+
+document
+  .getElementById(
+    "searchInput"
+  )
+  .addEventListener(
+    "input",
+    event => {
+
+      searchKeyword =
+        event.target.value
+          .trim()
+          .toLowerCase();
+
+      renderRecordsV2();
+    }
+  );
+
+
+function filterRecords(
+  records
+) {
+
+  if (
+    !searchKeyword
+  ) {
+
+    return records;
+  }
+
+  return records.filter(
+    record => {
+
+      const text = [
+        record.store,
+        record.food,
+        record.note,
+        record.address
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return text.includes(
+        searchKeyword
+      );
+    }
+  );
+}
+
+
+/* =====================================
+   V2 統計
+===================================== */
+
+function updateSummary(
+  records
+) {
+
+  const count =
+    records.length;
+
+  let totalTWD =
+    0;
+
+  let totalJPY =
+    0;
+
+  let ratingTotal =
+    0;
+
+  let ratingCount =
+    0;
+
+  records.forEach(
+    record => {
+
+      const amount =
+        Number(
+          record.amount
+        ) || 0;
+
+      if (
+        record.currency ===
+        "TWD"
+      ) {
+
+        totalTWD +=
+          amount;
+      }
+
+      if (
+        record.currency ===
+        "JPY"
+      ) {
+
+        totalJPY +=
+          amount;
+      }
+
+      if (
+        Number(
+          record.rating
+        ) > 0
+      ) {
+
+        ratingTotal +=
+          Number(
+            record.rating
+          );
+
+        ratingCount +=
+          1;
+      }
+    }
+  );
+
+  document
+    .getElementById(
+      "summaryCount"
+    )
+    .textContent =
+      count.toLocaleString();
+
+  document
+    .getElementById(
+      "summaryTWD"
+    )
+    .textContent =
+      "NT$" +
+      totalTWD.toLocaleString(
+        "zh-TW",
+        {
+          maximumFractionDigits:
+            0
+        }
+      );
+
+  document
+    .getElementById(
+      "summaryJPY"
+    )
+    .textContent =
+      "¥" +
+      totalJPY.toLocaleString(
+        "ja-JP",
+        {
+          maximumFractionDigits:
+            0
+        }
+      );
+
+  if (
+    ratingCount > 0
+  ) {
+
+    const average =
+      ratingTotal /
+      ratingCount;
+
+    document
+      .getElementById(
+        "summaryRating"
+      )
+      .textContent =
+        average.toFixed(
+          1
+        ) +
+        " ⭐";
+
+  } else {
+
+    document
+      .getElementById(
+        "summaryRating"
+      )
+      .textContent =
+        "-";
+  }
+}
+
+
+/* =====================================
+   V2 搜尋結果提示
+===================================== */
+
+function updateSearchInfo(
+  filteredCount,
+  totalCount
+) {
+
+  const info =
+    document.getElementById(
+      "searchResultInfo"
+    );
+
+  if (
+    !searchKeyword
+  ) {
+
+    info.textContent =
+      `顯示全部 ${totalCount} 筆紀錄`;
+
+    return;
+  }
+
+  info.textContent =
+    `找到 ${filteredCount} / ${totalCount} 筆紀錄`;
+}
+
+
+/* =====================================
+   日期顯示格式
+===================================== */
+
+function formatDateTitle(
+  dateString
+) {
+
+  if (
+    !dateString
+  ) {
+
+    return "未知日期";
+  }
+
+  const parts =
+    dateString.split(
+      "-"
+    );
+
+  if (
+    parts.length !== 3
+  ) {
+
+    return dateString;
+  }
+
+  const year =
+    Number(
+      parts[0]
+    );
+
+  const month =
+    Number(
+      parts[1]
+    );
+
+  const day =
+    Number(
+      parts[2]
+    );
+
+  const date =
+    new Date(
+      year,
+      month - 1,
+      day
+    );
+
+  const weekdayMap = [
+    "日",
+    "一",
+    "二",
+    "三",
+    "四",
+    "五",
+    "六"
+  ];
+
+  const weekday =
+    weekdayMap[
+      date.getDay()
+    ];
+
+  return (
+    `${year}/${month}/${day}（${weekday}）`
+  );
+}
+
+
+/* =====================================
+   每日統計
+===================================== */
+
+function calculateDailySummary(
+  records
+) {
+
+  let totalTWD =
+    0;
+
+  let totalJPY =
+    0;
+
+  records.forEach(
+    record => {
+
+      const amount =
+        Number(
+          record.amount
+        ) || 0;
+
+      if (
+        record.currency ===
+        "TWD"
+      ) {
+
+        totalTWD +=
+          amount;
+      }
+
+      if (
+        record.currency ===
+        "JPY"
+      ) {
+
+        totalJPY +=
+          amount;
+      }
+    }
+  );
+
+  return {
+    count:
+      records.length,
+
+    totalTWD,
+
+    totalJPY
+  };
+}
+
+
+/* =====================================
+   日期群組收合
+===================================== */
+
+function toggleDateGroup(
+  date
+) {
+
+  if (
+    collapsedDates.has(
+      date
+    )
+  ) {
+
+    collapsedDates.delete(
+      date
+    );
+
+  } else {
+
+    collapsedDates.add(
+      date
+    );
+  }
+
+  renderRecordsV2();
+}
+
+
+/* =====================================
+   V2 主畫面重繪
+===================================== */
+
+function renderRecordsV2() {
+
+  const filteredRecords =
+    filterRecords(
+      allRecordsCache
+    );
+
+  updateSummary(
+    filteredRecords
+  );
+
+  updateSearchInfo(
+    filteredRecords.length,
+    allRecordsCache.length
+  );
+
+  const container =
+    document.getElementById(
+      "records"
+    );
+
+  container.innerHTML =
+    "";
+
+  if (
+    filteredRecords.length === 0
+  ) {
+
+    container.innerHTML = `
+      <div class="card empty">
+        ${
+          searchKeyword
+            ? "找不到符合搜尋條件的美食紀錄 🔍"
+            : "還沒有美食紀錄 🍜"
+        }
+      </div>
+    `;
+
+    return;
+  }
+
+  const groups =
+    new Map();
+
+  filteredRecords.forEach(
+    record => {
+
+      const date =
+        record.date ||
+        "未知日期";
+
+      if (
+        !groups.has(
+          date
+        )
+      ) {
+
+        groups.set(
+          date,
+          []
+        );
+      }
+
+      groups
+        .get(
+          date
+        )
+        .push(
+          record
+        );
+    }
+  );
+
+  const sortedDates =
+    Array.from(
+      groups.keys()
+    )
+      .sort(
+        (a, b) =>
+          b.localeCompare(
+            a
+          )
+      );
+
+  sortedDates.forEach(
+    date => {
+
+      const records =
+        groups.get(
+          date
+        );
+
+      records.sort(
+        (a, b) =>
+          (
+            b.timestamp ||
+            ""
+          ).localeCompare(
+            a.timestamp ||
+            ""
+          )
+      );
+
+      const daily =
+        calculateDailySummary(
+          records
+        );
+
+      const group =
+        document.createElement(
+          "section"
+        );
+
+      group.className =
+        "date-group";
+
+      if (
+        collapsedDates.has(
+          date
+        )
+      ) {
+
+        group.classList.add(
+          "collapsed"
+        );
+      }
+
+      const header =
+        document.createElement(
+          "button"
+        );
+
+      header.type =
+        "button";
+
+      header.className =
+        "date-header";
+
+      header.onclick =
+        () => {
+
+          toggleDateGroup(
+            date
+          );
+        };
+
+      let dailyMoney =
+        "";
+
+      if (
+        daily.totalTWD > 0
+      ) {
+
+        dailyMoney +=
+          `NT$${daily.totalTWD.toLocaleString("zh-TW")}`;
+      }
+
+      if (
+        daily.totalJPY > 0
+      ) {
+
+        if (
+          dailyMoney
+        ) {
+
+          dailyMoney +=
+            "　";
+        }
+
+        dailyMoney +=
+          `¥${daily.totalJPY.toLocaleString("ja-JP")}`;
+      }
+
+      if (
+        !dailyMoney
+      ) {
+
+        dailyMoney =
+          "尚未記錄金額";
+      }
+
+      header.innerHTML = `
+        <div class="date-header-left">
+
+          <div class="date-title">
+            📅 ${escapeHTML(
+              formatDateTitle(
+                date
+              )
+            )}
+          </div>
+
+          <div class="date-summary">
+            ${daily.count} 筆紀錄
+            ·
+            ${escapeHTML(
+              dailyMoney
+            )}
+          </div>
+
+        </div>
+
+        <div class="date-toggle">
+          ▼
+        </div>
+      `;
+
+      const recordsWrap =
+        document.createElement(
+          "div"
+        );
+
+      recordsWrap.className =
+        "date-records";
+
+      records.forEach(
+        record => {
+
+          recordsWrap.appendChild(
+            createRecordCard(
+              record
+            )
+          );
+        }
+      );
+
+      group.appendChild(
+        header
+      );
+
+      group.appendChild(
+        recordsWrap
+      );
+
+      container.appendChild(
+        group
+      );
+    }
+  );
+}
+/* =====================================
+   建立單筆紀錄卡
+===================================== */
+
+function createRecordCard(
+  record
+) {
+
+  const card =
+    document.createElement(
+      "div"
+    );
+
+  card.className =
+    "card";
+
+  const moneyText =
+    formatCurrency(
+      record.currency,
+      record.amount
+    );
+
+  const stars =
+    record.rating
+      ? "★".repeat(
+          record.rating
+        ) +
+        "☆".repeat(
+          5 - record.rating
+        )
+      : "";
+
+  let mapHTML =
+    "";
+
+  if (
+    record.latitude != null &&
+    record.longitude != null
+  ) {
+
+    mapHTML = `
+      📍
+      <a
+        href="https://www.google.com/maps?q=${record.latitude},${record.longitude}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google Maps
+      </a>
+    `;
+  }
+
+  card.innerHTML = `
+
+    <div class="record-date">
+
+      🕒
+      ${escapeHTML(
+        record.time || ""
+      )}
+
+      &nbsp;
+
+      🌏
+      ${escapeHTML(
+        record.gmt || ""
+      )}
+
+    </div>
+
+
+    <div class="record-store">
+
+      🏪
+      ${escapeHTML(
+        record.store || ""
+      )}
+
+    </div>
+
+
+    ${
+      record.food
+        ? `
+          <div class="record-food">
+
+            🍽️
+            ${escapeHTML(
+              record.food
+            )}
+
+          </div>
+        `
+        : ""
+    }
+
+
+    ${
+      record.photo
+        ? `
+          <img
+            class="record-photo"
+            src="${record.photo}"
+            alt="美食照片"
+          >
+        `
+        : ""
+    }
+
+
+    ${
+      stars
+        ? `
+          <div class="record-stars">
+            ${stars}
+          </div>
+        `
+        : ""
+    }
+
+
+    <div class="record-meta">
+
+      ${
+        moneyText
+          ? `
+            💰
+            ${moneyText}
+            <br>
+          `
+          : ""
+      }
+
+      ${mapHTML}
+
+      ${
+        record.gpsAccuracy
+          ? `
+            · GPS ±${record.gpsAccuracy}m
+          `
+          : ""
+      }
+
+    </div>
+
+
+    ${
+      record.address
+        ? `
+          <div class="record-address">
+
+            🏠
+            ${escapeHTML(
+              getSavedAddress(
+                record
+              )
+            )}
+
+          </div>
+        `
+        : ""
+    }
+
+
+    ${
+      record.note
+        ? `
+          <div class="record-note">
+
+            ${escapeHTML(
+              record.note
+            )}
+
+          </div>
+        `
+        : ""
+    }
+
+
+    <div class="record-actions">
+
+      <button
+        class="btn-secondary"
+        type="button"
+        onclick="editRecord(${record.id})"
+      >
+        ✏️ 編輯
+      </button>
+
+
+      <button
+        class="btn-danger"
+        type="button"
+        onclick="deleteRecord(${record.id})"
+      >
+        🗑️ 刪除
+      </button>
+
+    </div>
+  `;
+
+  return card;
+}
+
+
+/* =====================================
+   金額格式
+===================================== */
+
+function formatCurrency(
+  currency,
+  amount
+) {
+
+  if (
+    amount === null ||
+    amount === undefined ||
+    amount === ""
+  ) {
+
+    return "";
+  }
+
+  const number =
+    Number(
+      amount
+    );
+
+  if (
+    currency === "JPY"
+  ) {
+
+    return (
+      "¥" +
+      number.toLocaleString(
+        "ja-JP",
+        {
+          maximumFractionDigits:
+            0
+        }
+      )
+    );
+  }
+
+  if (
+    currency === "TWD"
+  ) {
+
+    return (
+      "NT$" +
+      number.toLocaleString(
+        "zh-TW",
+        {
+          maximumFractionDigits:
+            0
+        }
+      )
+    );
+  }
+
+  return (
+    currency +
+    " " +
+    number.toLocaleString()
+  );
+}
+
+
+/* =====================================
+   儲存地址格式
+===================================== */
+
+function getSavedAddress(
+  record
+) {
+
+  if (
+    record.addressDetails
+  ) {
+
+    return formatAddress({
+      address:
+        record.addressDetails,
+
+      display_name:
+        record.address
+    });
+  }
+
+  return (
+    record.address ||
+    ""
+  );
+}
+
+
+/* =====================================
+   星星評分
+===================================== */
+
+document
+  .querySelectorAll(
+    ".star"
+  )
+  .forEach(
+    star => {
+
+      star.addEventListener(
+        "click",
+        () => {
+
+          rating =
+            Number(
+              star.dataset.value
+            );
+
+          updateStars();
+        }
+      );
+    }
+  );
 
 
 function updateStars() {
 
   document
-    .querySelectorAll(".star")
-    .forEach(star => {
+    .querySelectorAll(
+      ".star"
+    )
+    .forEach(
+      star => {
 
-      const value =
-        Number(
-          star.dataset.value
+        const value =
+          Number(
+            star.dataset.value
+          );
+
+        star.classList.toggle(
+          "active",
+          value <= rating
         );
-
-      star.classList.toggle(
-        "active",
-        value <= rating
-      );
-    });
+      }
+    );
 }
 
 
-/* =========================
-   照片處理
-========================= */
+/* =====================================
+   照片
+===================================== */
 
 document
   .getElementById(
@@ -1858,7 +4884,10 @@ document
       const file =
         event.target.files[0];
 
-      if (!file) {
+      if (
+        !file
+      ) {
+
         return;
       }
 
@@ -1882,10 +4911,13 @@ document
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
+          error
+        );
 
         alert(
-          "照片處理失敗"
+          "照片處理失敗：" +
+          error.message
         );
       }
     }
@@ -1966,14 +4998,14 @@ function compressImage(
                 height
               );
 
-              const result =
+              const dataURL =
                 canvas.toDataURL(
                   "image/jpeg",
                   0.78
                 );
 
               resolve(
-                result
+                dataURL
               );
             };
 
@@ -2009,9 +5041,9 @@ function compressImage(
 }
 
 
-/* =========================
+/* =====================================
    儲存紀錄
-========================= */
+===================================== */
 
 async function saveRecord() {
 
@@ -2180,11 +5212,11 @@ async function saveRecord() {
   }
 
   transaction.oncomplete =
-    () => {
+    async () => {
 
       resetForm();
 
-      loadRecords();
+      await loadRecords();
     };
 
   transaction.onerror =
@@ -2197,9 +5229,9 @@ async function saveRecord() {
 }
 
 
-/* =========================
-   取得所有紀錄
-========================= */
+/* =====================================
+   IndexedDB 讀取全部
+===================================== */
 
 function getAllRecords() {
 
@@ -2240,9 +5272,9 @@ function getAllRecords() {
 }
 
 
-/* =========================
-   取得單筆紀錄
-========================= */
+/* =====================================
+   IndexedDB 讀取單筆
+===================================== */
 
 function getRecord(
   id
@@ -2287,9 +5319,9 @@ function getRecord(
 }
 
 
-/* =========================
-   顯示紀錄
-========================= */
+/* =====================================
+   V2 載入紀錄
+===================================== */
 
 async function loadRecords() {
 
@@ -2299,328 +5331,24 @@ async function loadRecords() {
   records.sort(
     (a, b) =>
       (
-        b.timestamp || ""
+        b.timestamp ||
+        ""
       ).localeCompare(
-        a.timestamp || ""
+        a.timestamp ||
+        ""
       )
   );
 
-  const container =
-    document.getElementById(
-      "records"
-    );
+  allRecordsCache =
+    records;
 
-  container.innerHTML =
-    "";
-
-  if (
-    records.length === 0
-  ) {
-
-    container.innerHTML = `
-      <div class="card empty">
-        還沒有美食紀錄 🍜
-      </div>
-    `;
-
-    return;
-  }
-
-  records.forEach(
-    record => {
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-      card.className =
-        "card";
-
-      const moneyText =
-        formatCurrency(
-          record.currency,
-          record.amount
-        );
-
-      const stars =
-        record.rating
-          ? "★".repeat(
-              record.rating
-            ) +
-            "☆".repeat(
-              5 - record.rating
-            )
-          : "";
-
-      let mapHTML =
-        "";
-
-      if (
-        record.latitude != null &&
-        record.longitude != null
-      ) {
-
-        mapHTML = `
-          📍
-          <a
-            href="https://www.google.com/maps?q=${record.latitude},${record.longitude}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google Maps
-          </a>
-        `;
-      }
-
-      card.innerHTML = `
-
-        <div class="record-date">
-
-          📅
-          ${escapeHTML(
-            record.date
-          )}
-
-          &nbsp;
-
-          🕒
-          ${escapeHTML(
-            record.time
-          )}
-
-          &nbsp;
-
-          🌏
-          ${escapeHTML(
-            record.gmt || ""
-          )}
-
-        </div>
-
-        <div class="record-store">
-
-          🏪
-          ${escapeHTML(
-            record.store
-          )}
-
-        </div>
-
-        ${
-          record.food
-            ? `
-              <div class="record-food">
-
-                🍽️
-                ${escapeHTML(
-                  record.food
-                )}
-
-              </div>
-            `
-            : ""
-        }
-
-        ${
-          record.photo
-            ? `
-              <img
-                class="record-photo"
-                src="${record.photo}"
-                alt="美食照片"
-              >
-            `
-            : ""
-        }
-
-        ${
-          stars
-            ? `
-              <div class="record-stars">
-                ${stars}
-              </div>
-            `
-            : ""
-        }
-
-        <div class="record-meta">
-
-          ${
-            moneyText
-              ? `
-                💰 ${moneyText}
-                <br>
-              `
-              : ""
-          }
-
-          ${mapHTML}
-
-          ${
-            record.gpsAccuracy
-              ? `
-                · GPS ±${record.gpsAccuracy}m
-              `
-              : ""
-          }
-
-        </div>
-
-        ${
-          record.address
-            ? `
-              <div class="record-address">
-
-                🏠
-                ${escapeHTML(
-                  getSavedAddress(
-                    record
-                  )
-                )}
-
-              </div>
-            `
-            : ""
-        }
-
-        ${
-          record.note
-            ? `
-              <div class="record-note">
-
-                ${escapeHTML(
-                  record.note
-                )}
-
-              </div>
-            `
-            : ""
-        }
-
-        <div class="record-actions">
-
-          <button
-            class="btn-secondary"
-            type="button"
-            onclick="editRecord(${record.id})"
-          >
-            ✏️ 編輯
-          </button>
-
-          <button
-            class="btn-danger"
-            type="button"
-            onclick="deleteRecord(${record.id})"
-          >
-            🗑️ 刪除
-          </button>
-
-        </div>
-      `;
-
-      container.appendChild(
-        card
-      );
-    }
-  );
+  renderRecordsV2();
 }
 
 
-/* =========================
-   儲存地址格式
-========================= */
-
-function getSavedAddress(
-  record
-) {
-
-  if (
-    record.addressDetails
-  ) {
-
-    return formatAddress({
-      address:
-        record.addressDetails,
-
-      display_name:
-        record.address
-    });
-  }
-
-  return (
-    record.address ||
-    ""
-  );
-}
-
-
-/* =========================
-   金額格式
-========================= */
-
-function formatCurrency(
-  currency,
-  amount
-) {
-
-  if (
-    amount === null ||
-    amount === undefined ||
-    amount === ""
-  ) {
-
-    return "";
-  }
-
-  const number =
-    Number(
-      amount
-    );
-
-  if (
-    currency === "JPY"
-  ) {
-
-    return (
-      "¥" +
-      number.toLocaleString(
-        "ja-JP",
-        {
-          maximumFractionDigits:
-            0
-        }
-      )
-    );
-  }
-
-  if (
-    currency === "TWD"
-  ) {
-
-    return (
-      "NT$" +
-      number.toLocaleString(
-        "zh-TW",
-        {
-          maximumFractionDigits:
-            0
-        }
-      )
-    );
-  }
-
-  return (
-    currency +
-    " " +
-    number.toLocaleString()
-  );
-}
-
-
-/* =========================
+/* =====================================
    編輯
-========================= */
+===================================== */
 
 async function editRecord(
   id
@@ -2677,7 +5405,9 @@ async function editRecord(
     record.note || "";
 
   rating =
-    record.rating || 0;
+    Number(
+      record.rating
+    ) || 0;
 
   updateStars();
 
@@ -2707,11 +5437,23 @@ async function editRecord(
     document.getElementById(
       "locationBox"
     ).innerHTML = `
-      緯度：${latitude.toFixed(6)}
+
+      緯度：
+      ${latitude.toFixed(6)}
       <br>
-      經度：${longitude.toFixed(6)}
-      <br>
-      GPS 精度：約 ${gpsAccuracy || "?"} 公尺
+
+      經度：
+      ${longitude.toFixed(6)}
+
+      ${
+        gpsAccuracy
+          ? `
+            <br>
+            GPS 精度：約 ${gpsAccuracy} 公尺
+          `
+          : ""
+      }
+
       <br><br>
 
       <a
@@ -2812,9 +5554,9 @@ async function editRecord(
 }
 
 
-/* =========================
+/* =====================================
    刪除
-========================= */
+===================================== */
 
 function deleteRecord(
   id
@@ -2847,16 +5589,16 @@ function deleteRecord(
     );
 
   transaction.oncomplete =
-    () => {
+    async () => {
 
-      loadRecords();
+      await loadRecords();
     };
 }
 
 
-/* =========================
+/* =====================================
    取消編輯
-========================= */
+===================================== */
 
 function cancelEdit() {
 
@@ -2864,9 +5606,9 @@ function cancelEdit() {
 }
 
 
-/* =========================
+/* =====================================
    清空表單
-========================= */
+===================================== */
 
 function resetForm() {
 
@@ -2995,9 +5737,9 @@ function resetForm() {
 }
 
 
-/* =========================
+/* =====================================
    匯出 JSON
-========================= */
+===================================== */
 
 async function exportData() {
 
@@ -3021,7 +5763,7 @@ async function exportData() {
       "Travel Food Diary",
 
     version:
-      1,
+      2,
 
     exportedAt:
       new Date()
@@ -3083,9 +5825,9 @@ async function exportData() {
 }
 
 
-/* =========================
+/* =====================================
    匯入 JSON
-========================= */
+===================================== */
 
 document
   .getElementById(
@@ -3175,13 +5917,13 @@ document
         );
 
         transaction.oncomplete =
-          () => {
+          async () => {
 
             alert(
               "備份匯入完成"
             );
 
-            loadRecords();
+            await loadRecords();
           };
 
       } catch (error) {
@@ -3202,9 +5944,9 @@ document
   );
 
 
-/* =========================
+/* =====================================
    HTML 安全處理
-========================= */
+===================================== */
 
 function escapeHTML(
   value
@@ -3236,9 +5978,9 @@ function escapeHTML(
 }
 
 
-/* =========================
+/* =====================================
    啟動
-========================= */
+===================================== */
 
 async function init() {
 
@@ -3271,4 +6013,3 @@ init();
 
 </body>
 </html>
-
